@@ -13,7 +13,7 @@ namespace GCS //Game Commutation Server
 
     public class Server {
         class UDPacket { public UDPacket(byte type, bool useTime, byte[] data) { this.type = type; this.useTime = useTime; this.data = data; } public byte type; public bool useTime = true; public byte[] data; };
-        class UDPpackets { public volatile IPEndPoint actualIP; public uint sendertime = 0; public volatile List<UDPacket> broadcast = new List<UDPacket>(), unicast = new List<UDPacket>(); };
+        class UDPpackets { public volatile EndPoint actualIP; public uint sendertime = 0; public volatile List<UDPacket> broadcast = new List<UDPacket>(), unicast = new List<UDPacket>(); };
         class TCPBySendType { public List<byte[]> broadcast = new List<byte[]>(); public volatile List<byte[]> unicast = new List<byte[]>(); };
         class PacketByProtocol { public volatile TCPBySendType tcp = new TCPBySendType(); public volatile UDPpackets udp = new UDPpackets(); };
         class Client { public volatile bool active = true, notsent = false; public volatile PacketByProtocol protocols = new PacketByProtocol(); };
@@ -21,7 +21,7 @@ namespace GCS //Game Commutation Server
         volatile List<Client> clients = new List<Client>();
 
         EventWaitHandle waitPacketClear = new EventWaitHandle(false, EventResetMode.ManualReset), waitPacketSend = new EventWaitHandle(false, EventResetMode.ManualReset);
-        Timer ticker; uint time = 0;
+        Timer ticker, udp_established; uint time = 0;
         void TimerCallback(object s) {
             waitPacketSend.Reset();
             waitPacketClear.Reset();
@@ -35,14 +35,21 @@ namespace GCS //Game Commutation Server
         }
 
         public void Run() {
-            IPEndPoint ipPoint = new IPEndPoint(FNS.StaticMembers.IP_ADDRESS, FNS.StaticMembers.PORT_NUMBER);
             Socket listenTCPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try {
-                listenTCPSocket.Bind(ipPoint);
+                listenTCPSocket.Bind(new IPEndPoint(FNS.StaticMembers.IP_ADDRESS, FNS.StaticMembers.PORT_NUMBER));
                 listenTCPSocket.Listen(4);
                 Console.WriteLine("[i] TCP server started");
             } catch {
                 Console.WriteLine("[!] TCP server start error");
+                return;
+            }
+            UDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            try {
+                UDPSocket.Bind(new IPEndPoint(FNS.StaticMembers.IP_ADDRESS, FNS.StaticMembers.PORT_NUMBER));
+                Console.WriteLine("[i] UDP server started");
+            } catch {
+                Console.WriteLine("[!] UDP server start error");
                 return;
             }
 
@@ -50,6 +57,7 @@ namespace GCS //Game Commutation Server
             TaskFactory tfactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.LongRunning);
 
             ticker = new Timer(TimerCallback, null, 0, 50);
+            udp_established = new Timer(UDP_established, null, 30000, 30000);
             UDPreceiveThread.Start();
             int eindex;
             while (true) //Wait for connections
@@ -65,6 +73,14 @@ namespace GCS //Game Commutation Server
                         tfactory.StartNew(() => ClientInterface(handler, (byte)eindex));
                     }
                 } else handler.Disconnect(false);
+            }
+        }
+
+        byte[] UDP_established_actualiser = new byte[] { 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0 };
+        void UDP_established(object s) {
+            for (ushort i = 0; i != clients.Count; ++i) {
+                if (clients[i].active && clients[i].protocols.udp.actualIP != null)
+                    UDPSocket.SendTo(UDP_established_actualiser, clients[i].protocols.udp.actualIP);
             }
         }
         short HaveFreePlace() {
@@ -86,6 +102,7 @@ namespace GCS //Game Commutation Server
             return true;
         }
         void ClientInterface(Socket client, byte index) {
+            client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
             Client mecl = clients[index];
             {   //client notify block
                 //                      ushort len|com|ushort len|udp addr
@@ -93,7 +110,7 @@ namespace GCS //Game Commutation Server
             }
             byte[] TCPhead_buffer = new byte[5]; byte[] unicast_addr = new byte[1]; ushort readbytes;
             byte[] temp_buffer; byte[] indexstate = new byte[] { 1, 0, 3, 1, 0, 0 };
-            ushort msize;
+            ushort msize; Client tclient;
 
             bool nwaitsend = true;
             Stopwatch stw = new Stopwatch();
@@ -112,7 +129,7 @@ namespace GCS //Game Commutation Server
                                         TCPhead_buffer.CopyTo(temp_buffer, 0);
                                         client.Receive(temp_buffer, 5, msize, SocketFlags.None);
                                         mecl.protocols.tcp.broadcast.Add(temp_buffer);
-                                        Console.WriteLine("[" + index + " -> all] data: " + Encoding.ASCII.GetString(temp_buffer, 5, msize));
+                                        //Console.WriteLine("[" + index + " -> all] data: " + Encoding.ASCII.GetString(temp_buffer, 5, msize));
                                         break;
                                     case 2:
                                         msize = BitConverter.ToUInt16(TCPhead_buffer, 0);
@@ -122,13 +139,13 @@ namespace GCS //Game Commutation Server
                                         client.Receive(temp_buffer, 6, msize - 1, SocketFlags.None);
                                         temp_buffer[5] = index;
                                         clients[unicast_addr[0]].protocols.tcp.unicast.Add(temp_buffer);
-                                        Console.WriteLine("[" + index + " -> " + unicast_addr[0] + "] indexes: " + Encoding.ASCII.GetString(temp_buffer, 6, msize - 1));
+                                        //Console.WriteLine("[" + index + " -> " + unicast_addr[0] + "] data: " + Encoding.ASCII.GetString(temp_buffer, 6, msize - 1));
                                         break;
                                     case 3:
                                         client.Receive(unicast_addr);
                                         indexstate[5] = clients[unicast_addr[0]].active ? (byte)1 : (byte)0;
                                         mecl.protocols.tcp.unicast.Add(indexstate);
-                                        Console.WriteLine("[" + index + " -> " + index + "] indexState: " + indexstate[5]);
+                                        //Console.WriteLine("[" + index + " -> " + index + "] indexState: " + indexstate[5]);
                                         break;
                                     case 1:
                                         byte[] indexes = new byte[clients.Count(n => n.active == true) + 4]; ushort cpos = 5;
@@ -139,11 +156,11 @@ namespace GCS //Game Commutation Server
                                             if (i != index && clients[i].active)
                                                 indexes[cpos++] = (byte)i;
                                         mecl.protocols.tcp.unicast.Add(indexes);
-                                        Console.WriteLine("[" + index + " -> " + index + "] data: " + string.Join("", indexes.Select(n => n.ToString() + ",").ToArray<string>(), 5, indexes.Length - 5));
+                                        //Console.WriteLine("[" + index + " -> " + index + "] indexes: " + string.Join("", indexes.Select(n => n.ToString() + ",").ToArray<string>(), 5, indexes.Length - 5));
                                         break;
                                     case 4:
                                         mecl.protocols.udp.sendertime = 0;
-                                        Console.WriteLine("[" + index + " -> con] action: reset sender counter");
+                                        //Console.WriteLine("[" + index + " -> con] action: reset sender counter");
                                         break;
                                 }
                             } else throw new SocketException(10054);
@@ -154,16 +171,33 @@ namespace GCS //Game Commutation Server
                         ClientInterfaceThSend();
                         waitPacketSend.WaitOne();
                         nwaitsend = false;
-                        for (ushort i = 0; i != clients.Count; ++i) {
-                            if (i != index && clients[i].active) {
-                                for (ushort i1 = 0; i1 != clients[i].protocols.tcp.broadcast.Count; ++i1) {
-                                    client.Send(clients[i].protocols.tcp.broadcast[i1]);
-                                    //Console.WriteLine("[" + i + " -> " + index + "] time: " + stw.ElapsedMilliseconds + " data: " + Encoding.ASCII.GetString(clients[i].protocols.tcp.broadcast[i1], 5, clients[i].protocols.tcp.broadcast[i1].Length - 5));
-                                }
-                            }
-                        }
                         for (ushort i = 0; i != mecl.protocols.tcp.unicast.Count; ++i) {
                             client.Send(mecl.protocols.tcp.unicast[i]);
+                        }
+                        if (mecl.protocols.udp.actualIP != null) {
+                            for (ushort i = 0; i != clients.Count; ++i) {
+                                if (i != index && clients[i].active) {
+                                    tclient = clients[i];
+                                    for (ushort i1 = 0; i1 != tclient.protocols.tcp.broadcast.Count; ++i1) {
+                                        client.Send(tclient.protocols.tcp.broadcast[i1]);
+                                    }
+                                    for (ushort i1 = 0; i1 != tclient.protocols.udp.broadcast.Count; ++i1) {
+                                        UDPSocket.SendTo(tclient.protocols.udp.broadcast[i1].data, mecl.protocols.udp.actualIP);
+                                    }
+                                }
+                            }
+                            for (ushort i = 0; i != mecl.protocols.udp.unicast.Count; ++i) {
+                                UDPSocket.SendTo(mecl.protocols.udp.unicast[i].data, mecl.protocols.udp.actualIP);
+                            }
+                        } else {
+                            for (ushort i = 0; i != clients.Count; ++i) {
+                                if (i != index && clients[i].active) {
+                                    tclient = clients[i];
+                                    for (ushort i1 = 0; i1 != tclient.protocols.tcp.broadcast.Count; ++i1) {
+                                        client.Send(tclient.protocols.tcp.broadcast[i1]);
+                                    }
+                                }
+                            }
                         }
                         nwaitsend = true;
                         my_time = time;
@@ -216,26 +250,16 @@ namespace GCS //Game Commutation Server
                     waitPacketClear.Set();
                 }
         }
-        struct UDPReceived { public UDPReceived(EndPoint remoteIP, byte[] head, byte[] data) { this.remoteIP = remoteIP; this.head = head; this.data = data; } public EndPoint remoteIP; public byte[] head, data;  }
+        struct UDPReceived { public UDPReceived(EndPoint remoteIP, IEnumerable<byte> data) { this.remoteIP = remoteIP; this.data = data; } public EndPoint remoteIP; public IEnumerable<byte> data;  }
         volatile Queue<UDPReceived> UDPreceiveQueue = new Queue<UDPReceived>();
+        volatile Socket UDPSocket;
         void UDPreceiveInterface() {
-            byte[] UDPhead_buffer = new byte[11];
-            IPEndPoint listenIPoint = new IPEndPoint(FNS.StaticMembers.IP_ADDRESS, FNS.StaticMembers.PORT_NUMBER);
-            Socket listenUDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            try {
-                listenUDPSocket.Bind(listenIPoint);
-                Console.WriteLine("[i] UDP server started");
-            } catch {
-                Console.WriteLine("[!] UDP server start error");
-                return;
-            }
-
             TaskFactory tfactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.LongRunning);
             tfactory.StartNew(() => ReceivedUDPprocessing());
 
             EndPoint remoteIP = new IPEndPoint(IPAddress.Any, 0);
             Stopwatch stw = new Stopwatch();
-            byte[] buffer; ushort readbytes;
+            byte[] buffer = new byte[1432]; ushort readbytes;
             uint my_time = time; byte more40 = 0;
             while (true) {
                 stw.Restart();
@@ -243,34 +267,22 @@ namespace GCS //Game Commutation Server
                     if (UDPreceiveQueue.Count > 40) {
                         ++more40;
                         if (more40 == 40) {
-                            Console.WriteLine("[i] Add processing worker");
+                            Console.WriteLine("[i] Add UDP processing worker");
                             tfactory.StartNew(() => ReceivedUDPprocessing());
                         }
                     } else more40 = 0;
                 } else my_time = time;
-                while (listenUDPSocket.Available != 0) {
-                    readbytes = (ushort)listenUDPSocket.ReceiveFrom(UDPhead_buffer, ref remoteIP);
-                    if (readbytes == 11) {
-                        if (UDPhead_buffer[0] == UDPhead_buffer[8] && UDPhead_buffer[1] == UDPhead_buffer[9]) {
-                            readbytes = BitConverter.ToUInt16(UDPhead_buffer, 0);
-                            if (readbytes != 0) {
-                                buffer = new byte[readbytes];
-                                listenUDPSocket.ReceiveFrom(buffer, ref remoteIP);
-                                UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, UDPhead_buffer, buffer));
-                            } else {
-                                UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, UDPhead_buffer, null));
-                            }
+                while (UDPSocket.Available != 0) {
+                    readbytes = (ushort)UDPSocket.ReceiveFrom(buffer, 1432, SocketFlags.None,  ref remoteIP);
+                    if (readbytes >= 11) {
+                        if (buffer[0] == buffer[8] && buffer[1] == buffer[9]) {
+                            UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, buffer.Take(readbytes)));
                         } else {
                             buffer = new byte[512];
-                            while (listenUDPSocket.Available != 0)
-                                listenUDPSocket.ReceiveFrom(buffer, ref remoteIP);
+                            while (UDPSocket.Available != 0)
+                                UDPSocket.ReceiveFrom(buffer, 512, SocketFlags.None, ref remoteIP);
                         }
-                    } else {
-                        buffer = new byte[512];
-                        while (listenUDPSocket.Available != 0)
-                            listenUDPSocket.ReceiveFrom(buffer, ref remoteIP);
                     }
-                    
                 }
                 stw.Stop();
                 if (stw.ElapsedMilliseconds < 15) Thread.Sleep((int)(15 - stw.ElapsedMilliseconds));
@@ -281,7 +293,7 @@ namespace GCS //Game Commutation Server
             uint my_time = time;
             byte addr, con, type;
 
-            int temp; Client tclient;
+            int temp; Client tclient; ushort tsize; byte[] databytes; 
 
             uint timestamp; byte[] timestampb = new byte[4];
 
@@ -291,72 +303,70 @@ namespace GCS //Game Commutation Server
                 while (UDPreceiveQueue.Count != 0) {
                     waitPacketClear.WaitOne();
                     UDPReceived udprcv = UDPreceiveQueue.Dequeue();
-                    addr = udprcv.head[10];
+                    databytes = udprcv.data.ToArray();
+                    addr = databytes[10];
                     if (addr < clients.Count && clients[addr].active) {
-                        con = udprcv.head[3];
+                        con = databytes[3];
                         if ((con & 0xC) == 0) { //non-special mode
-                            if (udprcv.data != null) {
+                            tsize = BitConverter.ToUInt16(databytes, 0);
+                            if (tsize != 0) {
                                 if ((con & 0x2) == 0) { //broadcast
                                     if ((con & 0x1) == 1) { //use timestamps
-                                        timestamp = BitConverter.ToUInt32(udprcv.head, 4);
-                                        type = udprcv.head[2];
+                                        timestamp = BitConverter.ToUInt32(databytes, 4);
+                                        type = databytes[2];
                                         temp = -1;
                                         tclient = clients[addr];
                                         for (int i = 0; i != tclient.protocols.udp.broadcast.Count; ++i) 
                                             if (tclient.protocols.udp.broadcast[i].useTime && tclient.protocols.udp.broadcast[i].type == type) { temp = i; break; }
                                         if (temp == -1) {
                                             timestampb = BitConverter.GetBytes(time);
-                                            timestampb.CopyTo(udprcv.head, 4);
-                                            if (tclient.protocols.udp.actualIP != (IPEndPoint)udprcv.remoteIP)
-                                                tclient.protocols.udp.actualIP = (IPEndPoint)udprcv.remoteIP;
-                                            tclient.protocols.udp.broadcast.Add(new UDPacket(type, true, udprcv.head.Concat(udprcv.data).ToArray()));
+                                            timestampb.CopyTo(databytes, 4);
+                                            if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
+                                                tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                            tclient.protocols.udp.broadcast.Add(new UDPacket(type, true, databytes));
                                         } else {
-                                            if (timestamp > tclient.protocols.udp.sendertime) {
+                                            if (timestamp >= tclient.protocols.udp.sendertime) {
                                                 if (timestamp - tclient.protocols.udp.sendertime < 65536) tclient.protocols.udp.sendertime = timestamp;
                                                 timestampb = BitConverter.GetBytes(time);
-                                                timestampb.CopyTo(udprcv.head, 4);
-                                                if (tclient.protocols.udp.actualIP != (IPEndPoint)udprcv.remoteIP)
-                                                    tclient.protocols.udp.actualIP = (IPEndPoint)udprcv.remoteIP;
-                                                tclient.protocols.udp.broadcast[temp].data = udprcv.head.Concat(udprcv.data).ToArray();
+                                                timestampb.CopyTo(databytes, 4);
+                                                if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
+                                                    tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                                tclient.protocols.udp.broadcast[temp].data = databytes;
                                             }
                                         }
                                     } else { //no use timestamps
-                                        timestampb = BitConverter.GetBytes(time);
-                                        timestampb.CopyTo(udprcv.head, 4);
-                                        if (clients[addr].protocols.udp.actualIP != (IPEndPoint)udprcv.remoteIP)
-                                            clients[addr].protocols.udp.actualIP = (IPEndPoint)udprcv.remoteIP;
-                                        clients[addr].protocols.udp.broadcast.Add(new UDPacket(udprcv.head[2], false, udprcv.head.Concat(udprcv.data).ToArray()));
+                                        if (clients[addr].protocols.udp.actualIP != udprcv.remoteIP)
+                                            clients[addr].protocols.udp.actualIP = udprcv.remoteIP;
+                                        clients[addr].protocols.udp.broadcast.Add(new UDPacket(databytes[2], false, databytes));
                                     }
                                 } else { //unicast
                                     if ((con & 0x1) == 1) { //use timestamps
-                                        timestamp = BitConverter.ToUInt32(udprcv.head, 4);
-                                        type = udprcv.head[2];
+                                        timestamp = BitConverter.ToUInt32(databytes, 4);
+                                        type = databytes[2];
                                         temp = -1;
                                         tclient = clients[addr];
                                         for (int i = 0; i != tclient.protocols.udp.unicast.Count; ++i)
                                             if (tclient.protocols.udp.unicast[i].useTime && tclient.protocols.udp.unicast[i].type == type) { temp = i; break; }
                                         if (temp == -1) {
                                             timestampb = BitConverter.GetBytes(time);
-                                            timestampb.CopyTo(udprcv.head, 4);
-                                            if (tclient.protocols.udp.actualIP != (IPEndPoint)udprcv.remoteIP)
-                                                tclient.protocols.udp.actualIP = (IPEndPoint)udprcv.remoteIP;
-                                            tclient.protocols.udp.unicast.Add(new UDPacket(type, true, udprcv.head.Concat(udprcv.data).ToArray()));
+                                            timestampb.CopyTo(databytes, 4);
+                                            if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
+                                                tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                            tclient.protocols.udp.unicast.Add(new UDPacket(type, true, databytes));
                                         } else {
-                                            if (timestamp > tclient.protocols.udp.sendertime) {
+                                            if (timestamp >= tclient.protocols.udp.sendertime) {
                                                 if (timestamp - tclient.protocols.udp.sendertime < 65536) tclient.protocols.udp.sendertime = timestamp;
                                                 timestampb = BitConverter.GetBytes(time);
-                                                timestampb.CopyTo(udprcv.head, 4);
-                                                if (tclient.protocols.udp.actualIP != (IPEndPoint)udprcv.remoteIP)
-                                                    tclient.protocols.udp.actualIP = (IPEndPoint)udprcv.remoteIP;
-                                                tclient.protocols.udp.unicast[temp].data = udprcv.head.Concat(udprcv.data).ToArray();
+                                                timestampb.CopyTo(databytes, 4);
+                                                if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
+                                                    tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                                tclient.protocols.udp.unicast[temp].data = databytes;
                                             }
                                         }
                                     } else { //no use timestamps
-                                        timestampb = BitConverter.GetBytes(time);
-                                        timestampb.CopyTo(udprcv.head, 4);
-                                        if (clients[addr].protocols.udp.actualIP != (IPEndPoint)udprcv.remoteIP)
-                                            clients[addr].protocols.udp.actualIP = (IPEndPoint)udprcv.remoteIP;
-                                        clients[addr].protocols.udp.unicast.Add(new UDPacket(udprcv.head[2], false, udprcv.head.Concat(udprcv.data).ToArray()));
+                                        if (clients[addr].protocols.udp.actualIP != udprcv.remoteIP)
+                                            clients[addr].protocols.udp.actualIP = udprcv.remoteIP;
+                                        clients[addr].protocols.udp.unicast.Add(new UDPacket(databytes[2], false, databytes));
                                     }
                                 }
                             }
