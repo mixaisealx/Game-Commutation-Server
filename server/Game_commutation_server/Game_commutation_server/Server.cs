@@ -275,12 +275,8 @@ namespace GCS //Game Commutation Server
                 while (UDPSocket.Available != 0) {
                     readbytes = (ushort)UDPSocket.ReceiveFrom(buffer, 1432, SocketFlags.None,  ref remoteIP);
                     if (readbytes >= 11) {
-                        if (buffer[0] == buffer[8] && buffer[1] == buffer[9]) {
+                        if (buffer[0] == buffer[8] && buffer[1] == buffer[9] && BitConverter.ToUInt16(buffer, 0) == readbytes - 11) {
                             UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, buffer.Take(readbytes)));
-                        } else {
-                            buffer = new byte[512];
-                            while (UDPSocket.Available != 0)
-                                UDPSocket.ReceiveFrom(buffer, 512, SocketFlags.None, ref remoteIP);
                         }
                     }
                 }
@@ -293,7 +289,7 @@ namespace GCS //Game Commutation Server
             uint my_time = time;
             byte addr, con, type;
 
-            int temp; Client tclient; ushort tsize; byte[] databytes; 
+            int temp; Client tclient; byte[] databytes; 
 
             uint timestamp; byte[] timestampb = new byte[4];
 
@@ -308,8 +304,7 @@ namespace GCS //Game Commutation Server
                     if (addr < clients.Count && clients[addr].active) {
                         con = databytes[3];
                         if ((con & 0xC) == 0) { //non-special mode
-                            tsize = BitConverter.ToUInt16(databytes, 0);
-                            if (tsize != 0) {
+                            if (databytes.Length - 11 != 0) {
                                 if ((con & 0x2) == 0) { //broadcast
                                     if ((con & 0x1) == 1) { //use timestamps
                                         timestamp = BitConverter.ToUInt32(databytes, 4);
@@ -326,12 +321,14 @@ namespace GCS //Game Commutation Server
                                             tclient.protocols.udp.broadcast.Add(new UDPacket(type, true, databytes));
                                         } else {
                                             if (timestamp >= tclient.protocols.udp.sendertime) {
-                                                if (timestamp - tclient.protocols.udp.sendertime < 65536) tclient.protocols.udp.sendertime = timestamp;
-                                                timestampb = BitConverter.GetBytes(time);
-                                                timestampb.CopyTo(databytes, 4);
-                                                if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
-                                                    tclient.protocols.udp.actualIP = udprcv.remoteIP;
-                                                tclient.protocols.udp.broadcast[temp].data = databytes;
+                                                if (timestamp - tclient.protocols.udp.sendertime < int.MaxValue) {
+                                                    tclient.protocols.udp.sendertime = timestamp;
+                                                    timestampb = BitConverter.GetBytes(time);
+                                                    timestampb.CopyTo(databytes, 4);
+                                                    if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
+                                                        tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                                    tclient.protocols.udp.broadcast[temp].data = databytes;
+                                                }
                                             }
                                         }
                                     } else { //no use timestamps
@@ -355,12 +352,14 @@ namespace GCS //Game Commutation Server
                                             tclient.protocols.udp.unicast.Add(new UDPacket(type, true, databytes));
                                         } else {
                                             if (timestamp >= tclient.protocols.udp.sendertime) {
-                                                if (timestamp - tclient.protocols.udp.sendertime < 65536) tclient.protocols.udp.sendertime = timestamp;
-                                                timestampb = BitConverter.GetBytes(time);
-                                                timestampb.CopyTo(databytes, 4);
-                                                if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
-                                                    tclient.protocols.udp.actualIP = udprcv.remoteIP;
-                                                tclient.protocols.udp.unicast[temp].data = databytes;
+                                                if (timestamp - tclient.protocols.udp.sendertime < int.MaxValue) {
+                                                    tclient.protocols.udp.sendertime = timestamp;
+                                                    timestampb = BitConverter.GetBytes(time);
+                                                    timestampb.CopyTo(databytes, 4);
+                                                    if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
+                                                        tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                                    tclient.protocols.udp.unicast[temp].data = databytes;
+                                                }
                                             }
                                         }
                                     } else { //no use timestamps

@@ -1,7 +1,0 @@
-D:\Данные\Visual Studio\Repos\Game_commutation_server\tester\bin\Debug\tester.exe.config
-D:\Данные\Visual Studio\Repos\Game_commutation_server\tester\bin\Debug\tester.exe
-D:\Данные\Visual Studio\Repos\Game_commutation_server\tester\bin\Debug\tester.pdb
-D:\Данные\Visual Studio\Repos\Game_commutation_server\tester\obj\Debug\tester.csprojAssemblyReference.cache
-D:\Данные\Visual Studio\Repos\Game_commutation_server\tester\obj\Debug\tester.csproj.CoreCompileInputs.cache
-D:\Данные\Visual Studio\Repos\Game_commutation_server\tester\obj\Debug\tester.exe
-D:\Данные\Visual Studio\Repos\Game_commutation_server\tester\obj\Debug\tester.pdb
