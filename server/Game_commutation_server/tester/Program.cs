@@ -24,8 +24,6 @@ namespace tester
             IPEndPoint ipPoint = new IPEndPoint(ip, port);
             TCPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             UDPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            Console.Write("Enter udp receiver port number: ");
-            UDPSocket.Bind(new IPEndPoint(IPAddress.Any, ushort.Parse(Console.ReadLine())));
             TCPSocket.Connect(ipPoint);
             while (TCPSocket.Available == 0) Thread.Sleep(50);
             {

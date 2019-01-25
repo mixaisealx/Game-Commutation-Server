@@ -369,7 +369,10 @@ namespace GCS //Game Commutation Server
                                     }
                                 }
                             }
-                        } //ELSE - special mode
+                        } else if ((con & 0xC) == 4) {
+                            if (clients[addr].protocols.udp.actualIP != udprcv.remoteIP)
+                                clients[addr].protocols.udp.actualIP = udprcv.remoteIP;
+                        }
                     }
                 }
                 stw.Stop();
