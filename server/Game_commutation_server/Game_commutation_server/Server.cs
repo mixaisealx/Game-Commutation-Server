@@ -19,7 +19,7 @@ namespace GCS //Game Commutation Server
         class Client { public volatile bool active = true, notsent = false; public volatile PacketByProtocol protocols = new PacketByProtocol(); };
 
         volatile List<Client> clients = new List<Client>();
-
+     
         EventWaitHandle waitPacketClear = new EventWaitHandle(false, EventResetMode.ManualReset), waitPacketSend = new EventWaitHandle(false, EventResetMode.ManualReset);
         Timer ticker, udp_established; uint time = 0;
         void TimerCallback(object s) {
@@ -37,6 +37,7 @@ namespace GCS //Game Commutation Server
         public void Run() {
             Socket listenTCPSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try {
+                listenTCPSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
                 listenTCPSocket.Bind(new IPEndPoint(FNS.StaticMembers.IP_ADDRESS, FNS.StaticMembers.PORT_NUMBER));
                 listenTCPSocket.Listen(4);
                 Console.WriteLine("[i] TCP server started");
@@ -102,7 +103,6 @@ namespace GCS //Game Commutation Server
             return true;
         }
         void ClientInterface(Socket client, byte index) {
-            client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
             Client mecl = clients[index];
             {   //client notify block
                 //                      ushort len|com|ushort len|udp addr
@@ -261,28 +261,42 @@ namespace GCS //Game Commutation Server
             Stopwatch stw = new Stopwatch();
             byte[] buffer = new byte[1432]; ushort readbytes;
             uint my_time = time; byte more40 = 0;
-            while (true) {
-                stw.Restart();
-                if (my_time == time) {
-                    if (UDPreceiveQueue.Count > 40) {
-                        ++more40;
-                        if (more40 == 40) {
-                            Console.WriteLine("[i] Add UDP processing worker");
-                            tfactory.StartNew(() => ReceivedUDPprocessing());
+        retry:
+            try
+            {
+                while (true)
+                {
+                    stw.Restart();
+                    if (my_time == time)
+                    {
+                        if (UDPreceiveQueue.Count > 40)
+                        {
+                            ++more40;
+                            if (more40 == 40)
+                            {
+                                Console.WriteLine("[i] Add UDP processing worker");
+                                tfactory.StartNew(() => ReceivedUDPprocessing());
+                            }
                         }
-                    } else more40 = 0;
-                } else my_time = time;
-                while (UDPSocket.Available != 0) {
-                    readbytes = (ushort)UDPSocket.ReceiveFrom(buffer, 1432, SocketFlags.None,  ref remoteIP);
-                    if (readbytes >= 11) {
-                        if (buffer[0] == buffer[8] && buffer[1] == buffer[9] && BitConverter.ToUInt16(buffer, 0) == readbytes - 11) {
-                            UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, buffer.Take(readbytes)));
+                        else more40 = 0;
+                    }
+                    else my_time = time;
+                    while (UDPSocket.Available != 0)
+                    {
+                        readbytes = (ushort)UDPSocket.ReceiveFrom(buffer, 1432, SocketFlags.None, ref remoteIP);
+                        if (readbytes >= 11)
+                        {
+                            if (buffer[0] == buffer[8] && buffer[1] == buffer[9] && BitConverter.ToUInt16(buffer, 0) == readbytes - 11)
+                            {
+                                UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, buffer.Take(readbytes)));
+                            }
                         }
                     }
+                    stw.Stop();
+                    if (stw.ElapsedMilliseconds < 15) Thread.Sleep((int)(15 - stw.ElapsedMilliseconds));
                 }
-                stw.Stop();
-                if (stw.ElapsedMilliseconds < 15) Thread.Sleep((int)(15 - stw.ElapsedMilliseconds));
             }
+            catch { goto retry; }
         }
 
         void ReceivedUDPprocessing() {

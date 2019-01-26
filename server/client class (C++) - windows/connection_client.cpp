@@ -1,16 +1,17 @@
 #define WIN32_LEAN_AND_MEAN
 
+
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <exception>
-#include "fullPart.h"
 
 // Need to link with Ws2_32.lib
 #pragma comment (lib, "Ws2_32.lib")
 
+#include "connection_client.h"
 
 using namespace std;
 
@@ -43,18 +44,18 @@ bool ClientProtocolProcessor::Initialise(const char* ipAddress, unsigned short p
 		addr.sin_addr.s_addr = htonl(INADDR_ANY);
 		inet_pton(AF_INET, ipAddress, &addr.sin_addr.s_addr);
 		UDPsendaddress = *(sockaddr*)&addr;
-		udp_buffer[7] = udp_buffer[6] = udp_buffer[5] = udp_buffer[4] = udp_buffer[8] = *udp_buffer = tcp_buffer[9] = tcp_buffer[1] = udp_buffer[2] = 0;
+		udp_buffer = new char[1432];
+		udp_buffer[7] = udp_buffer[6] = udp_buffer[5] = udp_buffer[4] = udp_buffer[8] = *udp_buffer = udp_buffer[9] = udp_buffer[1] = udp_buffer[2] = 0;
 		udp_buffer[3] = 4;
 		udp_buffer[10] = address;
 		sendto(UDPConnectSocket, udp_buffer, 11, 0, &UDPsendaddress, sizeof(UDPsendaddress));
 	}
-	setsockopt(TCPConnectSocket, SOL_SOCKET, SO_KEEPALIVE, (char*)&temp, sizeof(temp));
 	tcp_buffer = new char[128];
-	udp_buffer = new char[1432];
 	initialised = true;
 	return true;
 }
 void ClientProtocolProcessor::SendTCP(DistributionType distr, const char* buffer, unsigned short buffersize, char userdata4bits, char unicast_address) {
+	if (!initialised) throw exception("Uninitialized");
 	if (!distr) {
 		if (buffersize + 5 > current_tcp_bufflen) {
 			delete[] tcp_buffer;
@@ -76,42 +77,81 @@ void ClientProtocolProcessor::SendTCP(DistributionType distr, const char* buffer
 		tcp_buffer[3] = *tcp_buffer = buffersize & 0xFF;
 		tcp_buffer[4] = tcp_buffer[1] = buffersize >> 8;
 		tcp_buffer[2] = 2 | userdata4bits << 4;
-		tcp_buffer[5] = address;
+		tcp_buffer[5] = unicast_address;
 		memcpy(tcp_buffer + 6, buffer, buffersize-1);
 		send(TCPConnectSocket, tcp_buffer, buffersize + 5, 0);
 	}
 }
 
 void ClientProtocolProcessor::SendUDP(DistributionType distr, const char* buffer, unsigned short buffersize, char udp_mainTypeUserdata, char userdata4bits, bool packet_GroupingCounting, char unicast_address) {
+	if (!initialised) throw exception("Uninitialized");
 	if (buffersize > 1421) throw exception("Overflow");
-	udp_buffer[8] = *udp_buffer = buffersize & 0xFF;
-	tcp_buffer[9] = tcp_buffer[1] = buffersize >> 8 & 0xFF;
-	tcp_buffer[2] = udp_mainTypeUserdata;
 	if (packet_GroupingCounting) {
-		if (udp_counter == 4294967295) {
+		if (udp_counter != 4294967295) ++udp_counter;
+		else {
 			udp_counter = 0;
-			tcp_buffer[4] = tcp_buffer[1] = tcp_buffer[3] = *tcp_buffer = 0;
-			tcp_buffer[2] = 4;
-			send(TCPConnectSocket, tcp_buffer, 5, 0);
+			udp_buffer[4] = udp_buffer[1] = udp_buffer[3] = *udp_buffer = 0;
+			udp_buffer[2] = 4;
+			send(TCPConnectSocket, udp_buffer, 5, 0);
 		}
-		tcp_buffer[4] = udp_counter & 0xFF;
-		tcp_buffer[5] = udp_counter >> 8 & 0xFF;
-		tcp_buffer[6] = udp_counter >> 8 & 0xFF;
-		tcp_buffer[7] = udp_counter >> 8;
+		udp_buffer[4] = udp_counter & 0xFF;
+		udp_buffer[5] = udp_counter >> 8 & 0xFF;
+		udp_buffer[6] = udp_counter >> 8 & 0xFF;
+		udp_buffer[7] = udp_counter >> 8;
 	}
-	
-	tcp_buffer[10] = address;
+	udp_buffer[8] = *udp_buffer = buffersize & 0xFF;
+	udp_buffer[9] = udp_buffer[1] = buffersize >> 8 & 0xFF;
+	udp_buffer[2] = udp_mainTypeUserdata;
 	if (!distr) {
-		tcp_buffer[3] = 0 | packet_GroupingCounting | userdata4bits << 4;
-		memcpy(tcp_buffer + 5, buffer, buffersize);
-		send(TCPConnectSocket, tcp_buffer, buffersize + 5, 0);
+		udp_buffer[10] = address;
+		udp_buffer[3] = 0 | packet_GroupingCounting | userdata4bits << 4;
 	} else {
-		tcp_buffer[3] = 2 | packet_GroupingCounting | userdata4bits << 4;
-		memcpy(tcp_buffer + 6, buffer, buffersize - 1);
-		send(TCPConnectSocket, tcp_buffer, buffersize + 5, 0);
+		udp_buffer[10] = unicast_address;
+		udp_buffer[3] = 2 | packet_GroupingCounting | userdata4bits << 4;
 	}
+	memcpy(udp_buffer + 11, buffer, buffersize);
+	sendto(UDPConnectSocket, udp_buffer, buffersize + 11, 0, &UDPsendaddress, sizeof(UDPsendaddress));
 }
 
+void ClientProtocolProcessor::ReceiveTCP(DistributionType &distr, char &unicast_address, char &userdatd4bits, char *buffer, unsigned short &current_bufflen)
+{
+	if (recv(TCPConnectSocket, header_tcp_buffer, 5, 0) == 5) {
+		if (!initialised) throw exception("Uninitialized");
+		if (*header_tcp_buffer == header_tcp_buffer[3] && header_tcp_buffer[1] == header_tcp_buffer[4]) {
+			switch (header_tcp_buffer[2] & 0xF)
+			{
+			case 0:
+				if ((temp = *header_tcp_buffer | header_tcp_buffer[1] << 8) > current_bufflen) {
+					delete[] buffer;
+					current_bufflen = (current_bufflen + 5 >> 7) + 1 << 7;
+					buffer = new char[current_bufflen];
+				}
+				distr = DistributionType::Broadcast;
+				userdatd4bits = (header_tcp_buffer[2] & 0xF0) >> 4;
+				recv(TCPConnectSocket, buffer, temp, 0);
+				break;
+			case 2:
+				if ((temp = (*header_tcp_buffer | header_tcp_buffer[1] << 8) - 1) > current_bufflen) {
+					delete[] buffer;
+					current_bufflen = (current_bufflen + 5 >> 7) + 1 << 7;
+					buffer = new char[current_bufflen];
+				}
+				distr = DistributionType::Unicast;
+				userdatd4bits = (header_tcp_buffer[2] & 0xF0) >> 4;
+				recv(TCPConnectSocket, &tempaddrbuff, 1, 0);
+				unicast_address = tempaddrbuff;
+				recv(TCPConnectSocket, buffer, --temp, 0);
+				break;
+			}
+		} else {
+			Finalise();
+			throw exception("Uncorrect packet");
+		}
+	} else {
+		Finalise();
+		throw exception("Disconnected");
+	}
+}
 
 void ClientProtocolProcessor::Finalise() {
 	if (!initialised) throw exception("Uninitialized");
