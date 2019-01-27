@@ -1,0 +1,1161 @@
+﻿Log file open, 01/27/19 11:16:05
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogInit: Display: Running engine for game: MyProject3
+LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+LogPlatformFile: Not using cached read wrapper
+LogTaskGraph: Started task graph with 5 named threads and 23 total threads with 3 sets of task threads.
+LogStats: Stats thread started at 0.260210
+LogD3D11RHI: Loaded GFSDK_Aftermath_Lib.x64.dll
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +3:00, Platform Override: ''
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin AISupport
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin ActorLayerUtilities
+LogPluginManager: Mounting plugin CLionSourceCodeAccess
+LogPluginManager: Mounting plugin CodeLiteSourceCodeAccess
+LogPluginManager: Mounting plugin GitSourceControl
+LogPluginManager: Mounting plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting plugin NullSourceCodeAccess
+LogPluginManager: Mounting plugin PerforceSourceControl
+LogPluginManager: Mounting plugin SubversionSourceControl
+LogPluginManager: Mounting plugin UObjectPlugin
+LogPluginManager: Mounting plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting plugin AssetManagerEditor
+LogPluginManager: Mounting plugin CryptoKeys
+LogPluginManager: Mounting plugin DataValidation
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin GameplayTagsEditor
+LogPluginManager: Mounting plugin MacGraphicsSwitching
+LogPluginManager: Mounting plugin MeshEditor
+LogPluginManager: Mounting plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting plugin PluginBrowser
+LogPluginManager: Mounting plugin SpeedTreeImporter
+LogPluginManager: Mounting plugin DatasmithContent
+LogPluginManager: Mounting plugin VariantManagerContent
+LogPluginManager: Mounting plugin AlembicImporter
+LogPluginManager: Mounting plugin AppleImageUtils
+LogPluginManager: Mounting plugin AppleVision
+LogPluginManager: Mounting plugin BackChannel
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin GeometryCache
+LogPluginManager: Mounting plugin HTML5Networking
+LogPluginManager: Mounting plugin ProxyLODPlugin
+LogPluginManager: Mounting plugin MagicLeap
+LogPluginManager: Mounting plugin MagicLeapMedia
+LogPluginManager: Mounting plugin AndroidMedia
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin LinearTimecode
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin MediaPlayerEditor
+LogPluginManager: Mounting plugin WebMMedia
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin LevelSequenceEditor
+LogPluginManager: Mounting plugin MatineeToLevelSequence
+LogPluginManager: Mounting plugin NetcodeUnitTest
+LogPluginManager: Mounting plugin NUTUnrealEngine4
+LogPluginManager: Mounting plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting plugin OnlineSubsystemIOS
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin LauncherChunkInstaller
+LogPluginManager: Mounting plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting plugin AndroidMoviePlayer
+LogPluginManager: Mounting plugin AndroidPermission
+LogPluginManager: Mounting plugin AppleMoviePlayer
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin AudioCapture
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin EditableMesh
+LogPluginManager: Mounting plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting plugin Firebase
+LogPluginManager: Mounting plugin GoogleCloudMessaging
+LogPluginManager: Mounting plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin LocationServicesBPLibrary
+LogPluginManager: Mounting plugin MobilePatchingUtils
+LogPluginManager: Mounting plugin OculusVR
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+LogPluginManager: Mounting plugin SteamVR
+LogPluginManager: Mounting plugin WebMMoviePlayer
+LogPluginManager: Mounting plugin WindowsMoviePlayer
+LogStreaming: Display: Took  0.069s to configure plugins.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.0.2h
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogInit: Build: ++UE4+Release-4.21-CL-4753647
+LogInit: Engine Version: 4.21.2-4753647+++UE4+Release-4.21
+LogInit: Compatible Engine Version: 4.21.0-4541578+++UE4+Release-4.21
+LogInit: Net CL: 4541578
+LogInit: OS: Windows 10 (), CPU: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz, GPU: NVIDIA GeForce GTX 1080 Ti
+LogInit: Compiled (64-bit): Jan 19 2019 02:07:31
+LogInit: Compiled with Visual C++: 19.13.26129.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.21
+LogInit: Command Line:  -EpicPortal -epicusername=Miss.Glina -epicuserid=1b7e938815f64ac1ab471f3d8f646f71 -epiclocale=ru-RU
+LogInit: Base Directory: C:/Program Files/Epic Games/UE_4.21/Engine/Binaries/Win64/
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 22
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 2
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 26
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 34
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 2
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 27
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 9
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 2
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 2
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 17
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 4
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogStreaming: Display: Took  0.001s to delete old logs.
+LogInit: Presizing for max 8388607 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: Setting CVar [[con.DebugEarlyDefault:1]]
+LogConfig: Setting CVar [[r.setres:1280x720]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.VSync:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.RHICmdBypass:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Engine.ini]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.GPUCrashDebugging:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.DefaultFeature.AmbientOcclusion:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.DefaultFeature.AmbientOcclusionStaticFraction:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[vr.InstancedStereo:1]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.SeparateTranslucency:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.HZBOcclusion:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.SSR.MaxRoughness:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[r.rhicmdbypass:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Engine.ini]
+[2019.01.27-08.16.05:601][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Engine.ini]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.MinBulkDataSizeForAsyncLoading:131072]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.AsyncLoadingThreadEnabled:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.EventDrivenLoaderEnabled:1]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.WarnIfTimeLimitExceeded:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMultiplier:1.5]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.TimeLimitExceededMinTime:0.005]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.UseBackgroundLevelStreaming:1]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.PriorityAsyncLoadingExtraTime:15.0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.LevelStreamingActorsUpdateTimeLimit:5.0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.PriorityLevelStreamingActorsUpdateExtraTime:5.0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsRegistrationGranularity:10]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.UnregisterComponentsTimeLimit:1.0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[s.LevelStreamingComponentsUnregistrationGranularity:5]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Engine.ini]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.MaxObjectsNotConsideredByGC:1]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.SizeOfPermanentObjectPool:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.FlushStreamingOnGC:0]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.NumRetriesBeforeForcingGC:10]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.AllowParallelGC:1]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.TimeBetweenPurgingPendingKillObjects:61.1]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.MaxObjectsInEditor:8388607]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.IncrementalBeginDestroyEnabled:1]]
+[2019.01.27-08.16.05:601][  0]LogConfig: Setting CVar [[gc.CreateGCClusters:1]]
+[2019.01.27-08.16.05:602][  0]LogConfig: Setting CVar [[gc.MergeGCClusters:0]]
+[2019.01.27-08.16.05:602][  0]LogConfig: Setting CVar [[gc.MinGCClusterSize:5]]
+[2019.01.27-08.16.05:602][  0]LogConfig: Setting CVar [[gc.ActorClusteringEnabled:0]]
+[2019.01.27-08.16.05:602][  0]LogConfig: Setting CVar [[gc.BlueprintClusteringEnabled:0]]
+[2019.01.27-08.16.05:602][  0]LogConfig: Setting CVar [[gc.UseDisregardForGCOnDedicatedServers:0]]
+[2019.01.27-08.16.05:602][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Engine.ini]
+[2019.01.27-08.16.05:602][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Engine.ini]
+[2019.01.27-08.16.05:603][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:3]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:0]]
+[2019.01.27-08.16.05:603][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.LensFlareQuality:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.BloomQuality:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:4]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.SSR.Quality:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.SceneColorFormat:2]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.01.27-08.16.05:604][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.01.27-08.16.05:604][  0]LogInit: Selected Device Profile: [Windows]
+[2019.01.27-08.16.05:604][  0]LogInit: Applying CVar settings loaded from the selected device profile: [Windows]
+[2019.01.27-08.16.05:614][  0]LogHAL: Display: Platform has ~ 16 GB [17116753920 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Vulkan.UseRealUBs:1]]
+[2019.01.27-08.16.05:614][  0]LogInit: Going up to parent DeviceProfile []
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SkeletalMeshLODBias:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.ViewDistanceScale:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.PostProcessAAQuality:3]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.LightFunctionQuality:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.ShadowQuality:5]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Shadow.CSM.MaxCascades:10]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Shadow.MaxResolution:2048]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Shadow.MaxCSMResolution:2048]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Shadow.RadiusThreshold:0.01]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Shadow.DistanceScale:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Shadow.CSM.TransitionScale:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Shadow.PreShadowResolutionFactor:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DistanceFieldShadowing:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DistanceFieldAO:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.AOQuality:2]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.VolumetricFog:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridPixelSize:8]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.VolumetricFog.GridSizeZ:128]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.VolumetricFog.HistoryMissSupersampleCount:4]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.LightMaxDrawDistanceScale:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.CapsuleShadows:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.MotionBlurQuality:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMipLevelFactor:0.4]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.AmbientOcclusionMaxQuality:100]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.AmbientOcclusionLevels:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.AmbientOcclusionRadiusScale:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DepthOfFieldQuality:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.RenderTargetPoolMin:400]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.LensFlareQuality:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SceneColorFringeQuality:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.EyeAdaptationQuality:2]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.BloomQuality:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.FastBlurThreshold:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Upscale.Quality:3]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Tonemapper.GrainQuantization:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.LightShaftQuality:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Filter.SizeScale:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Tonemapper.Quality:5]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Gather.AccumulatorQuality:1        ; higher gathering accumulator quality]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Gather.PostfilterMethod:1          ; Median3x3 postfilering method]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Gather.EnableBokehSettings:0       ; no bokeh simulation when gathering]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Gather.RingCount:4                 ; medium number of samples when gathering]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Scatter.ForegroundCompositing:1    ; additive foreground scattering]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Scatter.BackgroundCompositing:2    ; additive background scattering]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Scatter.EnableBokehSettings:1      ; bokeh simulation when scattering]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Scatter.MaxSpriteRatio:0.1         ; only a maximum of 10% of scattered bokeh]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Recombine.Quality:1                ; cheap slight out of focus]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Recombine.EnableBokehSettings:0    ; no bokeh simulation on slight out of focus]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.TemporalAAQuality:1                ; more stable temporal accumulation]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxForegroundRadius:0.025]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DOF.Kernel.MaxBackgroundRadius:0.025]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Streaming.MipBias:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Streaming.AmortizeCPUToGPUCopy:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Streaming.MaxNumTexturesToStreamPerFrame:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Streaming.Boost:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.MaxAnisotropy:8]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Streaming.LimitPoolSizeToVRAM:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Streaming.PoolSize:1000]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.Streaming.MaxEffectiveScreenSize:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.TranslucencyLightingVolumeDim:4]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.RefractionQuality:2]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SSR.Quality:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SceneColorFormat:2]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.DetailMode:2]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.TranslucencyVolumeBlur:0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.MaterialQualityLevel:1 ; High quality]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SSS.Scale:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SSS.SampleSet:2]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SSS.Quality:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.SSS.HalfRes:1]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.EmitterSpawnRateScale:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[r.ParticleLightQuality:2]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Scalability.ini]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[foliage.DensityScale:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Setting CVar [[grass.DensityScale:1.0]]
+[2019.01.27-08.16.05:614][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2019.01.27-08.16.05:615][  0]LogConfig: Setting CVar [[net.UseAdaptiveNetUpdateFrequency:0]]
+[2019.01.27-08.16.05:615][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Config/Windows/Engine.ini]
+[2019.01.27-08.16.05:615][  0]LogInit: Computer: VRAR-9
+[2019.01.27-08.16.05:615][  0]LogInit: User: User
+[2019.01.27-08.16.05:615][  0]LogInit: CPU Page size=4096, Cores=4
+[2019.01.27-08.16.05:615][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2019.01.27-08.16.05:615][  0]LogMemory: Memory total: Physical=15.9GB (16GB approx)
+[2019.01.27-08.16.05:615][  0]LogMemory: Platform Memory Stats for Windows
+[2019.01.27-08.16.05:615][  0]LogMemory: Process Physical Memory: 102.72 MB used, 102.73 MB peak
+[2019.01.27-08.16.05:615][  0]LogMemory: Process Virtual Memory: 93.81 MB used, 93.81 MB peak
+[2019.01.27-08.16.05:615][  0]LogMemory: Physical Memory: 5801.51 MB used,  10522.30 MB free, 16323.81 MB total
+[2019.01.27-08.16.05:615][  0]LogMemory: Virtual Memory: 4652.53 MB used,  134213072.00 MB free, 134217728.00 MB total
+[2019.01.27-08.16.05:628][  0]LogInit: Using OS detected language (ru-RU).
+[2019.01.27-08.16.05:628][  0]LogInit: Using OS detected locale (ru-RU).
+[2019.01.27-08.16.05:628][  0]LogTextLocalizationManager: No specific localization for 'ru-RU' exists, so the 'ru' localization will be used.
+[2019.01.27-08.16.05:630][  0]LogStreaming: Display: Took  0.002s to InitEngineTextLocalization.
+[2019.01.27-08.16.05:630][  0]LogInit: Setting process to per monitor DPI aware
+[2019.01.27-08.16.05:656][  0]LogSlate: New Slate User Created.  User Index 0, Is Virtual User: 0
+[2019.01.27-08.16.05:656][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2019.01.27-08.16.05:879][  0]LogD3D11RHI: D3D11 adapters:
+[2019.01.27-08.16.05:928][  0]LogD3D11RHI:    0. 'NVIDIA GeForce GTX 1080 Ti' (Feature Level 11_0)
+[2019.01.27-08.16.05:928][  0]LogD3D11RHI:       11127/0/8161 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:1, VendorId:0x10de
+[2019.01.27-08.16.05:929][  0]LogD3D11RHI:    1. 'Microsoft Basic Render Driver' (Feature Level 11_0)
+[2019.01.27-08.16.05:929][  0]LogD3D11RHI:       0/0/8161 MB DedicatedVideo/DedicatedSystem/SharedSystem, Outputs:0, VendorId:0x1414
+[2019.01.27-08.16.05:929][  0]LogD3D11RHI: Chosen D3D11 Adapter: 0
+[2019.01.27-08.16.05:934][  0]LogD3D11RHI: Creating new Direct3DDevice
+[2019.01.27-08.16.05:934][  0]LogD3D11RHI:     GPU DeviceId: 0x1b06 (for the marketing name, search the web for "GPU Device Id")
+[2019.01.27-08.16.05:934][  0]LogWindows: EnumDisplayDevices:
+[2019.01.27-08.16.05:935][  0]LogWindows:    0. 'NVIDIA GeForce GTX 1080 Ti' (P:1 D:1)
+[2019.01.27-08.16.05:935][  0]LogWindows:    1. 'NVIDIA GeForce GTX 1080 Ti' (P:0 D:0)
+[2019.01.27-08.16.05:935][  0]LogWindows:    2. 'NVIDIA GeForce GTX 1080 Ti' (P:0 D:0)
+[2019.01.27-08.16.05:935][  0]LogWindows:    3. 'NVIDIA GeForce GTX 1080 Ti' (P:0 D:0)
+[2019.01.27-08.16.05:935][  0]LogWindows: DebugString: FoundDriverCount:4 
+[2019.01.27-08.16.05:935][  0]LogD3D11RHI:     Adapter Name: NVIDIA GeForce GTX 1080 Ti
+[2019.01.27-08.16.05:935][  0]LogD3D11RHI:   Driver Version: 417.71 (internal:25.21.14.1771, unified:417.71)
+[2019.01.27-08.16.05:935][  0]LogD3D11RHI:      Driver Date: 1-11-2019
+[2019.01.27-08.16.05:935][  0]LogRHI: Texture pool is 7788 MB (70% of 11127 MB)
+[2019.01.27-08.16.05:969][  0]LogD3D11RHI: Async texture creation enabled
+[2019.01.27-08.16.05:996][  0]LogD3D11RHI: GPU Timing Frequency: 1000.000000 (Debug: 2 2)
+[2019.01.27-08.16.06:286][  0]LogTemp: Display: Loaded TP AllDesktopTargetPlatform
+[2019.01.27-08.16.06:297][  0]LogTemp: Display: Loaded TP MacClientTargetPlatform
+[2019.01.27-08.16.06:307][  0]LogTemp: Display: Loaded TP MacNoEditorTargetPlatform
+[2019.01.27-08.16.06:317][  0]LogTemp: Display: Loaded TP MacServerTargetPlatform
+[2019.01.27-08.16.06:329][  0]LogTemp: Display: Loaded TP MacTargetPlatform
+[2019.01.27-08.16.06:340][  0]LogTemp: Display: Loaded TP WindowsClientTargetPlatform
+[2019.01.27-08.16.06:350][  0]LogTemp: Display: Loaded TP WindowsNoEditorTargetPlatform
+[2019.01.27-08.16.06:361][  0]LogTemp: Display: Loaded TP WindowsServerTargetPlatform
+[2019.01.27-08.16.06:366][  0]LogTemp: Display: Loaded TP WindowsTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:428][  0]LogTemp: Display: Loaded TP AndroidTargetPlatform
+[2019.01.27-08.16.06:429][  0]LogTemp: Display: Loaded TP HTML5TargetPlatform
+[2019.01.27-08.16.06:483][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2019.01.27-08.16.06:483][  0]LogTemp: Display: Loaded TP IOSTargetPlatform
+[2019.01.27-08.16.06:500][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2019.01.27-08.16.06:500][  0]LogTemp: Display: Loaded TP TVOSTargetPlatform
+[2019.01.27-08.16.06:509][  0]LogTemp: Display: Loaded TP LinuxClientTargetPlatform
+[2019.01.27-08.16.06:518][  0]LogTemp: Display: Loaded TP LinuxNoEditorTargetPlatform
+[2019.01.27-08.16.06:527][  0]LogTemp: Display: Loaded TP LinuxServerTargetPlatform
+[2019.01.27-08.16.06:536][  0]LogTemp: Display: Loaded TP LinuxTargetPlatform
+[2019.01.27-08.16.06:571][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2019.01.27-08.16.06:571][  0]LogTemp: Display: Loaded TP LuminTargetPlatform
+[2019.01.27-08.16.06:571][  0]LogTargetPlatformManager: Display: Building Assets For Windows
+[2019.01.27-08.16.06:617][  0]LogShaderCompilers: Guid format shader working directory is -20 characters bigger than the processId version (../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Intermediate/Shaders/WorkingDirectory/6852/).
+[2019.01.27-08.16.06:617][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/User/AppData/Local/Temp/UnrealShaderWorkingDir/CDCB22494B90F3FBE4459C85C1C2A48F/'.
+[2019.01.27-08.16.06:619][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2019.01.27-08.16.06:619][  0]LogShaderCompilers: Cannot use XGE Shader Compiler as Incredibuild is not installed on this machine.
+[2019.01.27-08.16.06:619][  0]LogShaderCompilers: Display: Using Local Shader Compiler.
+[2019.01.27-08.16.07:038][  0]LogDerivedDataCache: Display: Max Cache Size: 512 MB
+[2019.01.27-08.16.07:085][  0]LogDerivedDataCache: Loaded boot cache 0.05s 85MB C:/Users/User/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2019.01.27-08.16.07:085][  0]LogDerivedDataCache: Display: Loaded Boot cache: C:/Users/User/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc
+[2019.01.27-08.16.07:085][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file ../../../../../../Users/User/Documents/Unreal Projects/MyProject3/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2019.01.27-08.16.07:085][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchical cache Hierarchy.
+[2019.01.27-08.16.07:085][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file ../../../../../../Users/User/Documents/Unreal Projects/MyProject3/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.01.27-08.16.07:085][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchical cache Hierarchy.
+[2019.01.27-08.16.07:096][  0]LogDerivedDataCache: Display: Pak cache opened for reading ../../../Engine/DerivedDataCache/Compressed.ddp.
+[2019.01.27-08.16.07:096][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2019.01.27-08.16.07:096][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchical cache Hierarchy.
+[2019.01.27-08.16.07:108][  0]LogDerivedDataCache: Using Local data cache path C:/Users/User/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2019.01.27-08.16.07:108][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2019.01.27-08.16.07:108][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchical cache Hierarchy.
+[2019.01.27-08.16.07:125][  0]LogMaterial: Verifying Global Shaders for PCD3D_SM5
+[2019.01.27-08.16.07:126][  0]LogSlate: Using FreeType 2.6.0
+[2019.01.27-08.16.07:127][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2019.01.27-08.16.07:196][  0]LogAssetRegistry: FAssetRegistry took 0.0302 seconds to start up
+[2019.01.27-08.16.07:444][  0]LogInit: Selected Device Profile: [Windows]
+[2019.01.27-08.16.07:561][  0]LogSimplygon: Simplygon DLL not present - disabling.
+[2019.01.27-08.16.07:563][  0]LogMeshReduction: Using SimplygonSwarm for distributed automatic mesh merging
+[2019.01.27-08.16.07:563][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2019.01.27-08.16.07:563][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2019.01.27-08.16.07:563][  0]LogMeshReduction: No automatic skeletal mesh reduction module available
+[2019.01.27-08.16.07:574][  0]LogNetVersion: MyProject3 1.0.0, NetCL: 4541578, EngineNetVer: 5, GameNetVer: 0 (Checksum: 2916331349)
+[2019.01.27-08.16.07:975][  0]LogPackageLocalizationCache: Processed 11 localized package path(s) for 2 prioritized culture(s) in 0.073315 seconds
+[2019.01.27-08.16.07:981][  0]LogUObjectArray: 39775 objects as part of root set at end of initial load.
+[2019.01.27-08.16.07:981][  0]LogUObjectAllocator: 6914664 out of 0 bytes used by permanent object pool.
+[2019.01.27-08.16.07:981][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2019.01.27-08.16.08:644][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2019.01.27-08.16.08:657][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2019.01.27-08.16.09:175][  0]SourceControl: Source control is disabled
+[2019.01.27-08.16.09:175][  0]SourceControl: Source control is disabled
+[2019.01.27-08.16.09:176][  0]SourceControl: Source control is disabled
+[2019.01.27-08.16.09:176][  0]SourceControl: Source control is disabled
+[2019.01.27-08.16.09:314][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2019.01.27-08.16.09:417][  0]LogOcInput: OculusInput pre-init called
+[2019.01.27-08.16.09:536][  0]LogEngine: Initializing Engine...
+[2019.01.27-08.16.09:538][  0]LogHMD: SteamVR initialized.  Driver: lighthouse  Display: LHR-69DD5BA0
+[2019.01.27-08.16.09:539][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2019.01.27-08.16.09:539][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2019.01.27-08.16.09:539][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2019.01.27-08.16.09:539][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2019.01.27-08.16.09:725][  0]LogInit: Initializing FReadOnlyCVARCache
+[2019.01.27-08.16.09:736][  0]LogAIModule: Creating AISystem for world Untitled
+[2019.01.27-08.16.09:760][  0]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.16.09:773][  0]LogInit: FAudioDevice initialized.
+[2019.01.27-08.16.09:773][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2019.01.27-08.16.09:847][  0]LogDerivedDataCache: Saved boot cache 0.07s 85MB C:/Users/User/AppData/Local/UnrealEngine/4.21/DerivedDataCache/Boot.ddc.
+[2019.01.27-08.16.09:858][  0]LogInit: Texture streaming: Enabled
+[2019.01.27-08.16.09:871][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2019.01.27-08.16.09:881][  0]LogInit: Transaction tracking system initialized
+[2019.01.27-08.16.09:901][  0]BlueprintLog: New page: Editor Load
+[2019.01.27-08.16.09:961][  0]LocalizationService: Localization service is disabled
+[2019.01.27-08.16.10:335][  0]LogFileCache: Scanning file cache for directory 'C:/Users/User/Documents/Unreal Projects/MyProject3/Content/' took 0.01s
+[2019.01.27-08.16.10:335][  0]LogCook: Display: Max memory allowance for cook 16384mb min free memory 0mb
+[2019.01.27-08.16.10:335][  0]LogCook: Display: Mobile HDR setting 1
+[2019.01.27-08.16.10:335][  0]LogGameplayTags: Display: UGameplayTagsManager::DoneAddingNativeTags. DelegateIsBound: 0
+[2019.01.27-08.16.10:335][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI prefixes -  0.000 s
+[2019.01.27-08.16.10:335][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2019.01.27-08.16.10:335][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: ImportINI -  0.000 s
+[2019.01.27-08.16.10:335][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2019.01.27-08.16.10:432][  0]SourceControl: Source control is disabled
+[2019.01.27-08.16.10:432][  0]Cmd: MAP LOAD FILE="../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Content/VirtualRealityBP/Maps/StartupMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2019.01.27-08.16.10:433][  0]LightingResults: New page: Lighting Build
+[2019.01.27-08.16.10:435][  0]MapCheck: New page: Map Check
+[2019.01.27-08.16.10:435][  0]LightingResults: New page: Lighting Build
+[2019.01.27-08.16.10:533][  0]LogAIModule: Creating AISystem for world StartupMap
+[2019.01.27-08.16.10:538][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2019.01.27-08.16.10:555][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2019.01.27-08.16.10:555][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0,116ms to complete.
+[2019.01.27-08.16.10:556][  0]LogFileHelpers: Loading map 'StartupMap' took 0.123
+[2019.01.27-08.16.10:642][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.16.10:648][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.16.10:652][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.16.10:658][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.16.10:663][  0]LogCollectionManager: Loaded 0 collections in 0.001455 seconds
+[2019.01.27-08.16.10:689][  0]LogFileCache: Scanning file cache for directory 'C:/Users/User/Documents/Unreal Projects/MyProject3/Saved/Collections/' took 0.01s
+[2019.01.27-08.16.10:689][  0]LogFileCache: Scanning file cache for directory 'C:/Users/User/Documents/Unreal Projects/MyProject3/Content/Developers/User/Collections/' took 0.01s
+[2019.01.27-08.16.10:689][  0]LogFileCache: Scanning file cache for directory 'C:/Users/User/Documents/Unreal Projects/MyProject3/Content/Collections/' took 0.00s
+[2019.01.27-08.16.10:689][  0]LogCollectionManager: Rebuilt the GUID cache for 0 collections in 0.000000 seconds
+[2019.01.27-08.16.10:696][  0]LogContentBrowser: Native class hierarchy populated in 0.0068 seconds. Added 2651 classes and 620 folders.
+[2019.01.27-08.16.10:701][  0]LogContentBrowser: Native class hierarchy updated for 'WidgetCarousel' in 0.0002 seconds. Added 0 classes and 0 folders.
+[2019.01.27-08.16.10:702][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:702][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:703][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:703][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:703][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:704][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:704][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:704][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:705][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:705][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:705][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:706][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:706][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:706][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:707][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:707][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:707][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:708][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:708][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:708][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:709][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:709][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:709][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:710][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:710][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:710][  0]LogPakFile: Registered encryption key '00000000000000000000000000000000': 0 pak files mounted, 0 remain pending
+[2019.01.27-08.16.10:732][  0]LogContentBrowser: Native class hierarchy updated for 'AddContentDialog' in 0.0002 seconds. Added 0 classes and 0 folders.
+[2019.01.27-08.16.10:735][  0]LogContentBrowser: Native class hierarchy updated for 'SceneOutliner' in 0.0002 seconds. Added 1 classes and 2 folders.
+[2019.01.27-08.16.10:781][  0]LogSlate: Took 0.000161 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2019.01.27-08.16.10:783][  0]LogSlate: Took 0.000159 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2019.01.27-08.16.10:789][  0]LogSlate: Took 0.000164 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2019.01.27-08.16.10:860][  0]LogRenderer: Reallocating scene render targets to support 1208x576 Format 26 NumSamples 1 (Frame:1).
+[2019.01.27-08.16.10:947][  0]LogContentBrowser: Native class hierarchy updated for 'HierarchicalLODOutliner' in 0.0002 seconds. Added 0 classes and 0 folders.
+[2019.01.27-08.16.10:947][  0]LogLoad: (Engine Initialization) Total time: 6.69 seconds
+[2019.01.27-08.16.10:947][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2019.01.27-08.16.10:985][  0]LogAssetRegistry: Asset discovery search completed in 3.8111 seconds
+[2019.01.27-08.16.10:987][  0]LogCollectionManager: Rebuilt the object cache for 0 collections in 0.000000 seconds (found 0 objects)
+[2019.01.27-08.16.10:987][  0]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000054 seconds (updated 0 objects)
+[2019.01.27-08.16.10:988][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2019.01.27-08.16.11:013][  0]LogSlate: Took 0.000114 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.01.27-08.16.18:532][351]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.16.23:350][928]LogSlate: Took 0.000137 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2019.01.27-08.16.23:792][928]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.16.23:800][928]LogAssetEditorManager: Opening Asset editor for World /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap
+[2019.01.27-08.16.23:820][928]Cmd: MAP LOAD FILE="../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Content/VirtualRealityBP/Maps/MotionControllerMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2019.01.27-08.16.23:820][928]LightingResults: New page: Lighting Build
+[2019.01.27-08.16.23:820][928]LoadErrors: New page: Loading map: MotionControllerMap.umap
+[2019.01.27-08.16.23:821][928]MapCheck: New page: Map Check
+[2019.01.27-08.16.23:821][928]LightingResults: New page: Lighting Build
+[2019.01.27-08.16.23:888][928]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2019.01.27-08.16.23:925][928]Cmd: MAP CHECKDEP NOCLEARLOG
+[2019.01.27-08.16.23:925][928]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0,132ms to complete.
+[2019.01.27-08.16.23:925][928]LogFileHelpers: Loading map 'MotionControllerMap' took 0.105
+[2019.01.27-08.16.26:815][265]Cmd: DELETE
+[2019.01.27-08.16.26:815][265]Cmd: ACTOR DELETE
+[2019.01.27-08.16.26:818][265]LogEditorActor: Deleted Actor: TriggerBox
+[2019.01.27-08.16.26:835][265]LogEditorActor: Deleted 1 Actors (0.020 secs)
+[2019.01.27-08.16.34:015][123]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.16.44:905][407]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.17.41:412][808]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.18.33:407][876]LogSlate: Took 0.000153 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2019.01.27-08.18.35:327][104]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.18.36:245][214]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.18.36:247][214]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/FXVarietyPack/cubes/Cube_1.Cube_1
+[2019.01.27-08.18.36:614][214]LogContentBrowser: Native class hierarchy updated for 'BlueprintGraph' in 0.0004 seconds. Added 117 classes and 0 folders.
+[2019.01.27-08.18.37:177][214]LogSlate: Took 0.000152 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2019.01.27-08.18.41:173][628]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube28)
+[2019.01.27-08.18.42:095][728]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.18.42:749][806]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.18.42:751][806]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/VirtualRealityBP/Blueprints/BP_PickupCube.BP_PickupCube
+[2019.01.27-08.19.01:461][801]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.19.15:627][409]BlueprintLog: New page: Compile Cube_1
+[2019.01.27-08.19.17:988][647]LogSlate: Window 'BP_PickupCube' being destroyed
+[2019.01.27-08.19.17:992][647]LogSlate: Window 'BP_PickupCube' being destroyed
+[2019.01.27-08.19.18:047][647]LogActorComponent: UnregisterComponent: (/Engine/Transient.EditorFloorComp) Not registered. Aborting.
+[2019.01.27-08.19.19:220][780]LogEditorViewport: Clicking on Actor (LMB): Cube_1_C (Cube_1)
+[2019.01.27-08.19.23:214][250]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.19.23:280][258]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.19.23:297][258]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.19.23:297][258]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.19.23:297][258]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:19:23)
+[2019.01.27-08.19.23:308][258]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.19.23:314][258]LogPlayLevel: PIE: StaticDuplicateObject took: (0.006490s)
+[2019.01.27-08.19.23:315][258]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.19.23:315][258]LogPlayLevel: PIE: World Init took: (0.000445s)
+[2019.01.27-08.19.23:315][258]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.007167s)
+[2019.01.27-08.19.23:354][258]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.19.23:363][258]LogInit: FAudioDevice initialized.
+[2019.01.27-08.19.23:368][258]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.19.23:454][258]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.19.23:454][258]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.19.23:456][258]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.19.23
+[2019.01.27-08.19.23:456][258]LogWorld: Bringing up level for play took: 0.001174
+[2019.01.27-08.19.23:472][258]LogContentBrowser: Native class hierarchy updated for 'MovieSceneCapture' in 0.0002 seconds. Added 20 classes and 0 folders.
+[2019.01.27-08.19.23:477][258]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap 0,787
+[2019.01.27-08.19.23:477][258]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.19.23:519][259]LogRenderer: Reallocating scene render targets to support 4776x2652 Format 26 NumSamples 1 (Frame:1).
+[2019.01.27-08.19.39:219][669]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.19.39:298][669]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.19.39:323][669]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.19.39:353][669]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.19.39:353][669]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.19.39:392][670]LogPlayLevel: Display: Destroying online subsystem :Context_6
+[2019.01.27-08.19.40:603][813]LogEditorViewport: Clicking on Actor (LMB): Cube_1_C (Cube_1)
+[2019.01.27-08.19.49:460][869]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.20.00:027][119]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/FXVarietyPack/cubes/Cube_1.Cube_1
+[2019.01.27-08.20.07:000][784]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.20.07:452][833]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube29)
+[2019.01.27-08.20.08:228][917]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.20.08:985][  6]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.20.08:986][  6]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/VirtualRealityBP/Blueprints/BP_PickupCube.BP_PickupCube
+[2019.01.27-08.20.48:496][842]LogEditorTransaction: Undo Edit Static Mesh
+[2019.01.27-08.20.53:991][432]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.21.01:257][870]LogSlate: Window 'Pick Parent Class' being destroyed
+[2019.01.27-08.21.21:708][889]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.21.21:729][891]BlueprintLog: New page: Compile Cube_1
+[2019.01.27-08.21.30:311][790]LogEditorTransaction: Undo Remove Components
+[2019.01.27-08.21.33:423][120]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.21.38:284][622]BlueprintLog: New page: Compile Cube_1
+[2019.01.27-08.21.43:458][221]LogEditorViewport: Clicking on Actor (LMB): Cube_1_C (Cube_1)
+[2019.01.27-08.21.45:239][429]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.21.47:936][751]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.21.47:949][751]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.21.47:949][751]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.21.47:949][751]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:21:47)
+[2019.01.27-08.21.47:950][751]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.21.47:955][751]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005562s)
+[2019.01.27-08.21.47:955][751]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.21.47:956][751]LogPlayLevel: PIE: World Init took: (0.000418s)
+[2019.01.27-08.21.47:956][751]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006088s)
+[2019.01.27-08.21.47:998][751]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.21.48:007][751]LogInit: FAudioDevice initialized.
+[2019.01.27-08.21.48:012][751]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.21.48:085][751]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.21.48:085][751]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.21.48:086][751]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.21.48
+[2019.01.27-08.21.48:086][751]LogWorld: Bringing up level for play took: 0.001214
+[2019.01.27-08.21.48:104][751]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap -0,587
+[2019.01.27-08.21.48:104][751]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.21.55:936][367]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.21.56:012][367]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.21.56:038][367]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.21.56:073][367]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.21.56:073][367]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.21.56:114][368]LogPlayLevel: Display: Destroying online subsystem :Context_9
+[2019.01.27-08.21.56:898][460]LogEditorViewport: Clicking on Actor (LMB): Cube_1_C (Cube_1)
+[2019.01.27-08.22.04:230][247]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.22.13:226][118]LogMaterial: Display: Missing cached shader map for material M_DemoWall, compiling. 
+[2019.01.27-08.22.13:317][118]LogStaticMesh: Building static mesh SM_DemoRoomBackWall...
+[2019.01.27-08.22.13:324][118]LogShaderCompilers: Display: Shaders left to compile 156
+[2019.01.27-08.22.13:324][118]LogShaderCompilers: Display: Shaders left to compile 146
+[2019.01.27-08.22.13:324][118]LogShaderCompilers: Display: Shaders left to compile 136
+[2019.01.27-08.22.13:324][118]LogShaderCompilers: Display: Shaders left to compile 126
+[2019.01.27-08.22.13:332][118]LogStaticMesh: Built static mesh [0.02s] /Game/FXVarietyPack/EpicContent/Meshes/SM_DemoRoomBackWall.SM_DemoRoomBackWall
+[2019.01.27-08.22.15:454][237]LogShaderCompilers: Display: Shaders left to compile 116
+[2019.01.27-08.22.15:940][267]LogShaderCompilers: Display: Shaders left to compile 106
+[2019.01.27-08.22.16:567][307]LogShaderCompilers: Display: Shaders left to compile 96
+[2019.01.27-08.22.17:599][369]LogShaderCompilers: Display: Shaders left to compile 86
+[2019.01.27-08.22.19:452][482]LogShaderCompilers: Display: Shaders left to compile 76
+[2019.01.27-08.22.19:563][489]LogShaderCompilers: Display: Shaders left to compile 66
+[2019.01.27-08.22.20:020][514]LogShaderCompilers: Display: Shaders left to compile 56
+[2019.01.27-08.22.22:665][673]LogShaderCompilers: Display: Shaders left to compile 46
+[2019.01.27-08.22.23:358][714]LogShaderCompilers: Display: Shaders left to compile 36
+[2019.01.27-08.22.23:841][742]LogShaderCompilers: Display: Shaders left to compile 26
+[2019.01.27-08.22.24:897][801]LogShaderCompilers: Display: Shaders left to compile 16
+[2019.01.27-08.22.25:234][822]LogShaderCompilers: Display: Shaders left to compile 6
+[2019.01.27-08.22.28:272][ 27]BlueprintLog: New page: Compile Cube_1
+[2019.01.27-08.22.30:407][178]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.22.30:422][178]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.22.30:422][178]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.22.30:422][178]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:22:30)
+[2019.01.27-08.22.30:422][178]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.22.30:428][178]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005710s)
+[2019.01.27-08.22.30:428][178]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.22.30:428][178]LogPlayLevel: PIE: World Init took: (0.000466s)
+[2019.01.27-08.22.30:428][178]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006274s)
+[2019.01.27-08.22.30:470][178]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.22.30:480][178]LogInit: FAudioDevice initialized.
+[2019.01.27-08.22.30:484][178]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.22.30:562][178]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.22.30:562][178]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.22.30:564][178]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.22.30
+[2019.01.27-08.22.30:564][178]LogWorld: Bringing up level for play took: 0.001722
+[2019.01.27-08.22.30:583][178]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap -0,107
+[2019.01.27-08.22.30:583][178]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.22.39:362][817]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.22.39:441][817]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.22.39:478][817]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.22.39:509][817]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.22.39:509][817]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.22.39:561][818]LogPlayLevel: Display: Destroying online subsystem :Context_10
+[2019.01.27-08.22.40:577][935]LogEditorViewport: Clicking on Actor (LMB): Cube_1_C (Cube_1)
+[2019.01.27-08.22.41:313][ 18]Cmd: DELETE
+[2019.01.27-08.22.41:314][ 18]Cmd: ACTOR DELETE
+[2019.01.27-08.22.41:317][ 18]LogEditorActor: Deleted Actor: Cube_1_C
+[2019.01.27-08.22.41:344][ 18]LogEditorActor: Deleted 1 Actors (0.030 secs)
+[2019.01.27-08.22.43:733][290]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.23.04:072][590]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.23.07:103][951]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.07:769][ 26]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.08:155][ 71]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.08:609][124]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.09:488][227]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.09:893][274]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.11:456][460]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.12:111][537]LogEditorViewport: Clicking on Actor (LMB): TriggerBox (TriggerBox)
+[2019.01.27-08.23.24:219][951]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.23.25:226][ 67]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.23.28:601][465]Cmd: TRANSACTION UNDO
+[2019.01.27-08.23.28:601][465]LogEditorTransaction: Undo Create Actors
+[2019.01.27-08.23.37:880][684]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.23.43:511][322]Cmd: TRANSACTION UNDO
+[2019.01.27-08.23.43:512][322]LogEditorTransaction: Undo Scale Actors
+[2019.01.27-08.23.44:211][403]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube27)
+[2019.01.27-08.23.44:831][472]LogEditorViewport: Clicking on Actor (LMB): TriggerBox (TriggerBox)
+[2019.01.27-08.26.56:085][348]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.26.56:277][348]LogSavePackage: Moving '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/MotionControllerMap_Auto13976A4D84DE4BBB7768CEAB0B86A42AD.tmp' to '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/Autosaves/Game/VirtualRealityBP/Maps/MotionControllerMap_Auto1.umap'
+[2019.01.27-08.26.56:279][348]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/VirtualRealityBP/Maps/MotionControllerMap' took 0.173
+[2019.01.27-08.26.56:279][348]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.173
+[2019.01.27-08.26.56:280][348]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/FXVarietyPack/cubes/Cube_1] ([1] browsable assets)...
+[2019.01.27-08.26.56:292][348]OBJ SavePackage:     Rendered thumbnail for [Blueprint /Game/FXVarietyPack/cubes/Cube_1.Cube_1]
+[2019.01.27-08.26.56:292][348]OBJ SavePackage: Finished generating thumbnails for package [/Game/FXVarietyPack/cubes/Cube_1]
+[2019.01.27-08.26.56:321][348]LogSavePackage: Moving '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/Cube_1_Auto119F426B0425D2FE77B6849AF48B0F24D.tmp' to '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/Autosaves/Game/FXVarietyPack/cubes/Cube_1_Auto1.uasset'
+[2019.01.27-08.26.56:321][348]LogFileHelpers: Auto-saving content packages took 0.041
+[2019.01.27-08.31.20:029][992]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.31.25:417][634]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.31.25:491][643]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.31.25:507][643]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.31.25:507][643]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.31.25:507][643]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:31:25)
+[2019.01.27-08.31.25:507][643]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.31.25:512][643]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005574s)
+[2019.01.27-08.31.25:512][643]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.31.25:513][643]LogPlayLevel: PIE: World Init took: (0.000529s)
+[2019.01.27-08.31.25:513][643]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006229s)
+[2019.01.27-08.31.25:556][643]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.31.25:565][643]LogInit: FAudioDevice initialized.
+[2019.01.27-08.31.25:571][643]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.31.25:652][643]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.31.25:652][643]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.31.25:654][643]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.31.25
+[2019.01.27-08.31.25:655][643]LogWorld: Bringing up level for play took: 0.001568
+[2019.01.27-08.31.25:673][643]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap 0,983
+[2019.01.27-08.31.25:673][643]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.31.43:286][ 21]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.31.43:363][ 21]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.31.43:391][ 21]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.31.43:423][ 21]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.31.43:423][ 21]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.31.43:471][ 22]LogPlayLevel: Display: Destroying online subsystem :Context_12
+[2019.01.27-08.31.52:000][ 36]LogEditorViewport: Clicking on Actor (LMB): CubeNew1_C (CubeNew1)
+[2019.01.27-08.32.00:888][ 23]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.32.00:955][ 31]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.32.00:969][ 31]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.32.00:969][ 31]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.32.00:969][ 31]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:32:00)
+[2019.01.27-08.32.00:969][ 31]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.32.00:975][ 31]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005808s)
+[2019.01.27-08.32.00:976][ 31]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.32.00:976][ 31]LogPlayLevel: PIE: World Init took: (0.000528s)
+[2019.01.27-08.32.00:976][ 31]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006445s)
+[2019.01.27-08.32.01:019][ 31]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.32.01:027][ 31]LogInit: FAudioDevice initialized.
+[2019.01.27-08.32.01:032][ 31]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.32.01:109][ 31]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.32.01:109][ 31]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.32.01:111][ 31]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.32.01
+[2019.01.27-08.32.01:111][ 31]LogWorld: Bringing up level for play took: 0.001528
+[2019.01.27-08.32.01:130][ 31]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap 0,44
+[2019.01.27-08.32.01:130][ 31]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.32.03:664][256]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.32.03:741][256]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.32.03:768][256]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.32.03:802][256]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.32.03:803][256]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.32.03:846][257]LogPlayLevel: Display: Destroying online subsystem :Context_13
+[2019.01.27-08.32.05:485][452]LogEditorViewport: Clicking on Actor (LMB): CubeNew1_C (CubeNew1)
+[2019.01.27-08.32.07:045][634]LogEditorViewport: Clicking on Actor (LMB): TriggerBox (TriggerBox)
+[2019.01.27-08.32.10:086][993]LogEditorViewport: Clicking on Actor (LMB): Emitter (P_ky_magicCircle1)
+[2019.01.27-08.32.12:643][293]Cmd: DELETE
+[2019.01.27-08.32.12:643][293]Cmd: ACTOR DELETE
+[2019.01.27-08.32.12:646][293]LogEditorActor: Deleted Actor: Emitter
+[2019.01.27-08.32.12:668][293]LogEditorActor: Deleted 1 Actors (0.025 secs)
+[2019.01.27-08.32.23:811][617]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.32.23:877][625]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.32.23:892][625]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.32.23:892][625]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.32.23:892][625]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:32:23)
+[2019.01.27-08.32.23:892][625]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.32.23:898][625]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005431s)
+[2019.01.27-08.32.23:898][625]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.32.23:898][625]LogPlayLevel: PIE: World Init took: (0.000435s)
+[2019.01.27-08.32.23:898][625]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.005961s)
+[2019.01.27-08.32.23:938][625]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.32.23:947][625]LogInit: FAudioDevice initialized.
+[2019.01.27-08.32.23:952][625]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.32.24:025][625]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.32.24:025][625]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.32.24:027][625]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.32.24
+[2019.01.27-08.32.24:027][625]LogWorld: Bringing up level for play took: 0.001570
+[2019.01.27-08.32.24:046][625]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap -0,643
+[2019.01.27-08.32.24:047][625]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.33.19:253][589]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.33.19:328][589]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.33.19:355][589]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.33.19:389][589]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.33.19:389][589]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.33.19:434][590]LogPlayLevel: Display: Destroying online subsystem :Context_14
+[2019.01.27-08.33.20:195][681]LogEditorViewport: Clicking on Actor (LMB): CubeNew1_C (CubeNew1)
+[2019.01.27-08.33.21:613][846]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.33.22:307][929]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.33.22:309][929]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/FXVarietyPack/cubes/CubeNew1.CubeNew1
+[2019.01.27-08.33.34:968][254]LogSlate: Prevented a slow task dialog from being summoned while a context menu was open
+[2019.01.27-08.33.59:242][115]BlueprintLog: New page: Compile CubeNew1
+[2019.01.27-08.34.01:139][293]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.34.01:156][293]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.34.01:156][293]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.34.01:156][293]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:34:01)
+[2019.01.27-08.34.01:156][293]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.34.01:162][293]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005678s)
+[2019.01.27-08.34.01:162][293]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.34.01:162][293]LogPlayLevel: PIE: World Init took: (0.000417s)
+[2019.01.27-08.34.01:162][293]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006191s)
+[2019.01.27-08.34.01:204][293]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.34.01:213][293]LogInit: FAudioDevice initialized.
+[2019.01.27-08.34.01:218][293]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.34.01:302][293]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.34.01:302][293]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.34.01:304][293]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.34.01
+[2019.01.27-08.34.01:304][293]LogWorld: Bringing up level for play took: 0.001947
+[2019.01.27-08.34.01:322][293]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap 0,632
+[2019.01.27-08.34.01:322][293]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.34.49:001][149]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.34.49:078][149]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.34.49:124][149]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.34.49:134][149]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.34.49:166][149]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.34.49:167][149]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.34.49:243][150]LogPlayLevel: Display: Destroying online subsystem :Context_16
+[2019.01.27-08.34.56:017][958]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.34.56:110][969]LogSlate: Window 'CubeNew1*' being destroyed
+[2019.01.27-08.34.56:113][969]LogSlate: Window 'CubeNew1*' being destroyed
+[2019.01.27-08.34.56:173][969]LogActorComponent: UnregisterComponent: (/Engine/Transient.EditorFloorComp) Not registered. Aborting.
+[2019.01.27-08.34.56:231][969]LogActorComponent: UnregisterComponent: (/Engine/Transient.EditorFloorComp) Not registered. Aborting.
+[2019.01.27-08.35.02:806][737]LogEditorViewport: Clicking on Actor (LMB): CubeNew1_C (CubeNew1)
+[2019.01.27-08.35.04:192][897]Cmd: DELETE
+[2019.01.27-08.35.04:192][897]Cmd: ACTOR DELETE
+[2019.01.27-08.35.04:195][897]LogEditorActor: Deleted Actor: CubeNew1_C
+[2019.01.27-08.35.04:218][897]LogEditorActor: Deleted 1 Actors (0.026 secs)
+[2019.01.27-08.35.05:618][ 60]LogEditorViewport: Clicking on Actor (LMB): TriggerBox (TriggerBox)
+[2019.01.27-08.35.20:725][847]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.36.02:892][863]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube29)
+[2019.01.27-08.36.03:511][932]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube28)
+[2019.01.27-08.36.04:226][ 13]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube26)
+[2019.01.27-08.36.04:833][ 81]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube27)
+[2019.01.27-08.36.21:411][905]LogEditorViewport: Clicking on Actor (LMB): TriggerBox (TriggerBox)
+[2019.01.27-08.36.25:967][447]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.36.30:396][976]LogSlate: Window 'Select Path' being destroyed
+[2019.01.27-08.36.30:447][976]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.36.30:450][976]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/TriggerBox_Blueprint.TriggerBox_Blueprint
+[2019.01.27-08.36.49:758][134]LogSlate: Window 'TriggerBox_Blueprint*' being destroyed
+[2019.01.27-08.36.49:762][134]LogSlate: Window 'TriggerBox_Blueprint*' being destroyed
+[2019.01.27-08.36.50:982][274]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube29)
+[2019.01.27-08.37.07:297][888]LogUObjectGlobals: Warning: Failed to find object 'Object None.'
+[2019.01.27-08.37.07:298][888]LogUObjectGlobals: Warning: Failed to find object 'Object None.'
+[2019.01.27-08.37.07:302][888]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.37.09:085][ 94]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.37.09:086][ 94]LogAssetEditorManager: Opening Asset editor for LevelScriptBlueprint /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap
+[2019.01.27-08.37.15:444][751]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.37.18:098][ 63]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.37.20:563][357]Cmd: TRANSACTION UNDO
+[2019.01.27-08.37.20:563][357]LogEditorTransaction: Undo Move Actors
+[2019.01.27-08.37.22:767][612]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.37.22:873][624]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/Geometry/Meshes/Cube_Blueprint.Cube_Blueprint
+[2019.01.27-08.37.25:368][879]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/Geometry/Meshes/Cube_Blueprint.Cube_Blueprint
+[2019.01.27-08.37.35:638][966]LogSlate: Window 'Cube_Blueprint' being destroyed
+[2019.01.27-08.37.35:642][966]LogSlate: Window 'Cube_Blueprint' being destroyed
+[2019.01.27-08.37.37:435][171]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.37.38:243][266]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.37.38:996][356]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.37.38:998][356]LogAssetEditorManager: Opening Asset editor for Blueprint /Game/Geometry/Meshes/Cube_Blueprint.Cube_Blueprint
+[2019.01.27-08.38.00:663][569]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.38.00:723][576]LogSlate: Window 'Cube_Blueprint' being destroyed
+[2019.01.27-08.38.00:726][576]LogSlate: Window 'Cube_Blueprint' being destroyed
+[2019.01.27-08.38.01:430][653]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.38.12:959][ 20]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.38.13:998][139]Cmd: TRANSACTION UNDO
+[2019.01.27-08.38.13:998][139]LogEditorTransaction: Undo Clicking on Actors
+[2019.01.27-08.38.14:515][196]Cmd: TRANSACTION UNDO
+[2019.01.27-08.38.14:515][196]LogEditorTransaction: Undo Select Brush Surface
+[2019.01.27-08.38.14:902][239]Cmd: TRANSACTION UNDO
+[2019.01.27-08.38.14:902][239]LogEditorTransaction: Undo Select Brush Surface
+[2019.01.27-08.38.15:261][279]Cmd: TRANSACTION UNDO
+[2019.01.27-08.38.15:261][279]LogEditorTransaction: Undo Select Brush Surface
+[2019.01.27-08.38.15:704][327]Cmd: TRANSACTION UNDO
+[2019.01.27-08.38.15:704][327]LogEditorTransaction: Undo Move Actors
+[2019.01.27-08.38.23:123][213]LogUObjectGlobals: Warning: Failed to find object 'Object None.'
+[2019.01.27-08.38.23:123][213]LogUObjectGlobals: Warning: Failed to find object 'Object None.'
+[2019.01.27-08.38.23:129][213]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.38.24:402][360]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.38.24:404][360]LogAssetEditorManager: Opening Asset editor for LevelScriptBlueprint /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap
+[2019.01.27-08.38.28:149][738]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.38.35:311][ 84]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.38.37:189][304]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube26)
+[2019.01.27-08.38.37:825][375]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.38.41:008][750]LogEditorViewport: Clicking on Actor (LMB): TriggerBox_Blueprint_C (TriggerBox_Blueprint)
+[2019.01.27-08.38.42:170][885]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.40.09:925][315]LogWindowsTextInputMethodSystem: Display: IME system now deactivated.
+[2019.01.27-08.40.09:925][315]LogWindowsTextInputMethodSystem: Display: IME system now deactivated.
+[2019.01.27-08.40.40:452][129]LogSavePackage: Moving '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/MotionControllerMap_Auto27FB50F2A44069C569336FB8AF36DE7F9.tmp' to '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/Autosaves/Game/VirtualRealityBP/Maps/MotionControllerMap_Auto2.umap'
+[2019.01.27-08.40.40:455][129]LogFileHelpers: Editor autosave (incl. sublevels) for '/Game/VirtualRealityBP/Maps/MotionControllerMap' took 0.184
+[2019.01.27-08.40.40:455][129]LogFileHelpers: Editor autosave (incl. sublevels) for all levels took 0.184
+[2019.01.27-08.40.40:456][129]OBJ SavePackage: Generating thumbnails for [1] asset(s) in package [/Game/FXVarietyPack/cubes/CubeNew1] ([1] browsable assets)...
+[2019.01.27-08.40.40:482][129]OBJ SavePackage:     Rendered thumbnail for [Blueprint /Game/FXVarietyPack/cubes/CubeNew1.CubeNew1]
+[2019.01.27-08.40.40:483][129]OBJ SavePackage: Finished generating thumbnails for package [/Game/FXVarietyPack/cubes/CubeNew1]
+[2019.01.27-08.40.40:516][129]LogSavePackage: Moving '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/CubeNew1_Auto23EA303FB4F91F18A59CE74B412658484.tmp' to '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/Autosaves/Game/FXVarietyPack/cubes/CubeNew1_Auto2.uasset'
+[2019.01.27-08.40.40:517][129]OBJ SavePackage: Generating thumbnails for [0] asset(s) in package [/Game/TriggerBox_Blueprint] ([1] browsable assets)...
+[2019.01.27-08.40.40:517][129]OBJ SavePackage: Finished generating thumbnails for package [/Game/TriggerBox_Blueprint]
+[2019.01.27-08.40.40:527][129]LogSavePackage: Moving '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/TriggerBox_Blueprint_Auto2DE20AF1045A4D12FD6E7EE8C56CD4B13.tmp' to '../../../../../../Users/User/Documents/Unreal Projects/MyProject3/Saved/Autosaves/Game/TriggerBox_Blueprint_Auto2.uasset'
+[2019.01.27-08.40.40:528][129]LogFileHelpers: Auto-saving content packages took 0.072
+[2019.01.27-08.41.21:933][535]LogWindowsTextInputMethodSystem: Display: IME system now deactivated.
+[2019.01.27-08.41.21:933][535]LogWindowsTextInputMethodSystem: Display: IME system now deactivated.
+[2019.01.27-08.41.32:380][767]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.41.32:393][767]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.41.32:393][767]BlueprintLog: New page: Pre-Play auto-recompile
+[2019.01.27-08.41.32:394][767]LogPlayLevel: [PlayLevel] Compiling MotionControllerMap before play...
+[2019.01.27-08.41.32:511][767]LogPlayLevel: PlayLevel: Blueprint regeneration took 117 ms (1 blueprints)
+[2019.01.27-08.41.32:511][767]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:41:32)
+[2019.01.27-08.41.32:511][767]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.41.32:517][767]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005549s)
+[2019.01.27-08.41.32:517][767]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.41.32:517][767]LogPlayLevel: PIE: World Init took: (0.000604s)
+[2019.01.27-08.41.32:517][767]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006269s)
+[2019.01.27-08.41.32:560][767]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.41.32:569][767]LogInit: FAudioDevice initialized.
+[2019.01.27-08.41.32:574][767]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.41.32:647][767]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.41.32:648][767]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.41.32:649][767]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.41.32
+[2019.01.27-08.41.32:649][767]LogWorld: Bringing up level for play took: 0.001253
+[2019.01.27-08.41.32:666][767]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap -0,023
+[2019.01.27-08.41.32:667][767]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.42.08:937][657]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.42.09:015][657]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.42.09:050][657]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.42.09:065][657]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.42.09:097][657]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.42.09:097][657]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.42.09:145][658]LogPlayLevel: Display: Destroying online subsystem :Context_27
+[2019.01.27-08.42.11:719][966]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.42.16:974][594]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.42.17:663][672]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.42.18:261][742]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.42.18:659][788]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.42.19:183][849]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.42.20:224][972]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.42.25:359][427]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube29)
+[2019.01.27-08.42.38:030][906]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.42.40:709][226]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.42.40:721][226]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.42.40:721][226]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.42.40:721][226]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:42:40)
+[2019.01.27-08.42.40:721][226]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.42.40:727][226]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005527s)
+[2019.01.27-08.42.40:727][226]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.42.40:727][226]LogPlayLevel: PIE: World Init took: (0.000416s)
+[2019.01.27-08.42.40:727][226]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006045s)
+[2019.01.27-08.42.40:767][226]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.42.40:776][226]LogInit: FAudioDevice initialized.
+[2019.01.27-08.42.40:782][226]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.42.40:860][226]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.42.40:860][226]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.42.40:861][226]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.42.40
+[2019.01.27-08.42.40:862][226]LogWorld: Bringing up level for play took: 0.001219
+[2019.01.27-08.42.40:883][226]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap 0,192
+[2019.01.27-08.42.40:883][226]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.43.34:499][ 50]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.43.34:578][ 50]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.43.34:604][ 50]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.43.34:633][ 50]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.43.34:634][ 50]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.43.34:674][ 51]LogPlayLevel: Display: Destroying online subsystem :Context_28
+[2019.01.27-08.43.48:238][280]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.43.50:690][567]Cmd: TRANSACTION UNDO
+[2019.01.27-08.43.50:690][567]LogEditorTransaction: Undo Move Actors
+[2019.01.27-08.43.51:625][677]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.43.52:064][728]LogEditorViewport: Clicking on Actor (LMB): Cube_Blueprint_C (Cube_Blueprint)
+[2019.01.27-08.43.52:520][781]LogEditorViewport: Clicking on Actor (LMB): TriggerBox_Blueprint_C (TriggerBox_Blueprint)
+[2019.01.27-08.43.55:316][112]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.44.02:006][912]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.44.02:097][923]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.44.02:109][923]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.02:109][923]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.44.02:109][923]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:44:02)
+[2019.01.27-08.44.02:109][923]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.44.02:114][923]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005525s)
+[2019.01.27-08.44.02:115][923]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.44.02:115][923]LogPlayLevel: PIE: World Init took: (0.000437s)
+[2019.01.27-08.44.02:115][923]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006062s)
+[2019.01.27-08.44.02:157][923]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.44.02:166][923]LogInit: FAudioDevice initialized.
+[2019.01.27-08.44.02:172][923]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.44.02:255][923]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.44.02:255][923]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.44.02:256][923]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.44.02
+[2019.01.27-08.44.02:256][923]LogWorld: Bringing up level for play took: 0.001346
+[2019.01.27-08.44.02:273][923]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap -0,416
+[2019.01.27-08.44.02:274][923]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.04:330][106]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.04:410][106]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.44.04:435][106]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.44.04:464][106]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.44.04:464][106]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.04:503][107]LogPlayLevel: Display: Destroying online subsystem :Context_29
+[2019.01.27-08.44.06:547][349]LogEditorViewport: Clicking on Actor (LMB): BP_PickupCube_C (EditorCube29)
+[2019.01.27-08.44.19:036][804]Cmd: TRANSACTION UNDO
+[2019.01.27-08.44.19:036][804]LogEditorTransaction: Undo Move Actors
+[2019.01.27-08.44.23:816][357]LogSlate: FSceneViewport::OnFocusLost() reason 0
+[2019.01.27-08.44.23:882][365]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.44.23:895][365]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.23:895][365]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2019.01.27-08.44.23:895][365]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:44:23)
+[2019.01.27-08.44.23:895][365]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.44.23:901][365]LogPlayLevel: PIE: StaticDuplicateObject took: (0.006006s)
+[2019.01.27-08.44.23:901][365]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.44.23:901][365]LogPlayLevel: PIE: World Init took: (0.000423s)
+[2019.01.27-08.44.23:901][365]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006536s)
+[2019.01.27-08.44.23:944][365]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.44.23:953][365]LogInit: FAudioDevice initialized.
+[2019.01.27-08.44.23:958][365]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.44.24:034][365]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.44.24:034][365]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.44.24:036][365]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.44.24
+[2019.01.27-08.44.24:037][365]LogWorld: Bringing up level for play took: 0.001626
+[2019.01.27-08.44.24:055][365]PIE: Play in editor start time for /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap -0,635
+[2019.01.27-08.44.24:055][365]LogBlueprintUserMessages: Late PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.52:675][906]LogBlueprintUserMessages: Early EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.52:755][906]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.44.52:781][906]LogSlate: Window 'MyProject3 Game Preview Standalone (64-bit/PCD3D_SM5)' being destroyed
+[2019.01.27-08.44.52:809][906]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2019.01.27-08.44.52:810][906]LogBlueprintUserMessages: Late EndPlayMap Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.44.52:847][907]LogPlayLevel: Display: Destroying online subsystem :Context_30
+[2019.01.27-08.50.41:270][420]LogSlate: FSceneViewport::OnFocusLost() reason 2
+[2019.01.27-08.50.48:600][271]LogTemp: Repeating last play command: VR Preview
+[2019.01.27-08.50.48:612][271]LogBlueprintUserMessages: Early PlayInEditor Detection: Level '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel' has LevelScriptBlueprint '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap' with GeneratedClass '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap_C' with ClassGeneratedBy '/Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap:PersistentLevel.MotionControllerMap'
+[2019.01.27-08.50.48:612][271]BlueprintLog: New page: Pre-Play auto-recompile
+[2019.01.27-08.50.48:614][271]LogPlayLevel: [PlayLevel] Compiling MotionControllerMap before play...
+[2019.01.27-08.50.48:736][271]LogPlayLevel: PlayLevel: Blueprint regeneration took 124 ms (1 blueprints)
+[2019.01.27-08.50.48:736][271]PIE: New page: PIE session: MotionControllerMap (27 янв. 2019 г., 14:50:48)
+[2019.01.27-08.50.48:736][271]LogPlayLevel: Creating play world package: /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap
+[2019.01.27-08.50.48:742][271]LogPlayLevel: PIE: StaticDuplicateObject took: (0.005942s)
+[2019.01.27-08.50.48:742][271]LogAIModule: Creating AISystem for world MotionControllerMap
+[2019.01.27-08.50.48:743][271]LogPlayLevel: PIE: World Init took: (0.000532s)
+[2019.01.27-08.50.48:743][271]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/VirtualRealityBP/Maps/MotionControllerMap.MotionControllerMap to /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap (0.006582s)
+[2019.01.27-08.50.48:784][271]LogInit: XAudio2 using 'VIVE Pro (NVIDIA High Definition Audio)' : 2 channels at 48 kHz using 16 bits per sample (channel mask 0x3)
+[2019.01.27-08.50.48:795][271]LogInit: FAudioDevice initialized.
+[2019.01.27-08.50.48:800][271]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2019.01.27-08.50.48:872][271]LogUObjectGlobals: Warning: Failed to find object 'Class None.'
+[2019.01.27-08.50.48:872][271]LogLoad: Game class is 'GameModeBase'
+[2019.01.27-08.50.48:874][271]LogWorld: Bringing World /Game/VirtualRealityBP/Maps/UEDPIE_0_MotionControllerMap.MotionControllerMap up for play (max tick rate 0) at 2019.01.27-11.50.48
+[2019.01.27-08.50.48:875][271]LogWorld: Bringing up level for play took: 0.001942
+[2019.01.27-08.50.48:888][271]LogUnrealMath: Error: FMatrix::InverseFast(), trying to invert a NIL matrix, this results in NaNs! Use Inverse() instead.
+[2019.01.27-08.50.48:888][271]LogOutputDevice: Warning: 
+
+Script Stack (5 frames):
+BP_MotionController_C.SetupRoomScaleOutline
+BP_MotionController_C.ExecuteUbergraph_BP_MotionController
+BP_MotionController_C.ReceiveBeginPlay
+MotionControllerPawn_C.ExecuteUbergraph_MotionControllerPawn
+MotionControllerPawn_C.ReceiveBeginPlay
+
+[2019.01.27-08.50.49:428][271]LogStats: FPlatformStackWalk::StackWalkAndDump -  0.540 s
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: === Handled ensure: ===
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: 
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: Ensure condition failed: false [File:D:\Build\++UE4\Sync\Engine\Source\Runtime\Core\Private\Math\Matrix.cpp] [Line: 8]
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: FMatrix::InverseFast(), trying to invert a NIL matrix, this results in NaNs! Use Inverse() instead.
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: Stack: 
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc81438f6a UE4Editor-Core.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5ef153aa UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5f90afdd UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5f949894 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80cd4b14 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f3bc2a UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f656cc UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f67d2f UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f3c5dd UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:428][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f8add3 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f67d2f UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f3c5dd UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f67d2f UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80cd4b14 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f673c6 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5eff3923 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5efb725c UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5efc3c95 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5efef3b8 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5efd270f UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5f7436df UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5f027456 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80cd4b14 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f3bc2a UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f656cc UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f871c6 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f67d2f UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f3c5dd UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f67d2f UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80cd4b14 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc80f673c6 UE4Editor-CoreUObject.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5eff3923 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5efb725c UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5efc3c95 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc6041060c UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5f7ceb41 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc603b865e UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc5f76c1f1 UE4Editor-Engine.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc495cac89 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc495eb350 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc496092e6 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc49001891 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffc49922346 UE4Editor-UnrealEd.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ff697d16225 UE4Editor.exe!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ff697d2596c UE4Editor.exe!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ff697d259ea UE4Editor.exe!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ff697d348da UE4Editor.exe!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ff697d3659a UE4Editor.exe!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffcc0bb7e94 KERNEL32.DLL!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: [Callstack] 0x00007ffcc0daa251 ntdll.dll!UnknownFunction []
+[2019.01.27-08.50.49:429][271]LogOutputDevice: Error: 
+[2019.01.27-08.50.49:439][271]LogStats:                SubmitErrorReport -  0.000 s
