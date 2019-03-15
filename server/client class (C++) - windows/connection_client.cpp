@@ -7,6 +7,11 @@
 #include <stdio.h>
 #include <exception>
 #include <mutex>
+#include <chrono>
+#include <thread>
+#include <vector>
+#include <unordered_map>
+#include <functional>
 
 // Need to link with Ws2_32.lib
 #pragma comment (lib, "Ws2_32.lib")
@@ -18,13 +23,13 @@ using namespace std;
 
 
 bool ClientProtocolProcessor::Initialise(const char* ipAddress, unsigned short port, bool useUDP) {
-	if (!uninitialised) throw exception("Already initialized");
+	if (!uninitialised) throw ClientProtocolProcessorException("Already initialized");
 	sockaddr_in addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(port);
-	if (inet_pton(AF_INET, ipAddress, &addr.sin_addr.S_un.S_addr) != 1) { throw exception("Error on transforming 'const char*' to 'IP'"); }
+	if (inet_pton(AF_INET, ipAddress, &addr.sin_addr.S_un.S_addr) != 1) { throw ClientProtocolProcessorException("Error on transforming 'const char*' to 'IP'"); }
 	TCPConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	if (TCPConnectSocket == INVALID_SOCKET) { throw exception("Can not create TCP socket"); }
+	if (TCPConnectSocket == INVALID_SOCKET) { throw ClientProtocolProcessorException("Can not create TCP socket"); }
 	if (connect(TCPConnectSocket, (sockaddr *)&addr, sizeof(addr)) == SOCKET_ERROR) { closesocket(TCPConnectSocket); return false; }
 	int temp = 1; char addrbuf[6];
 	temp = recv(TCPConnectSocket, addrbuf, 6, 0);
@@ -37,7 +42,7 @@ bool ClientProtocolProcessor::Initialise(const char* ipAddress, unsigned short p
 	nuse_udp = !useUDP;
 	if (useUDP) {
 		UDPConnectSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		if (UDPConnectSocket == INVALID_SOCKET) { shutdown(TCPConnectSocket, SD_BOTH); closesocket(TCPConnectSocket); throw exception("Can not create UDP socket"); }
+		if (UDPConnectSocket == INVALID_SOCKET) { shutdown(TCPConnectSocket, SD_BOTH); closesocket(TCPConnectSocket); throw ClientProtocolProcessorException("Can not create UDP socket"); }
 		ZeroMemory(&addr, sizeof(addr));
 		addr.sin_family = AF_INET;
 		addr.sin_port = htons(port);
@@ -56,7 +61,7 @@ bool ClientProtocolProcessor::Initialise(const char* ipAddress, unsigned short p
 	return true;
 }
 void ClientProtocolProcessor::SendTCP(DistributionType distr, const char* buffer, unsigned short buffersize, char userdata4bits, char unicast_address) {
-	if (uninitialised) throw exception("Uninitialized");
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
 	mutex_tcp_sender.lock();
 	if (!distr) {
 		if (buffersize + 5 > current_tcp_bufflen) {
@@ -86,9 +91,9 @@ void ClientProtocolProcessor::SendTCP(DistributionType distr, const char* buffer
 }
 
 void ClientProtocolProcessor::SendUDP(DistributionType distr, const char* buffer, unsigned short buffersize, char udp_mainTypeUserdata, char userdata4bits, bool packet_GroupingCounting, char unicast_address) {
-	if (uninitialised) throw exception("Uninitialized");
-	if (nuse_udp) throw exception("Uninitialized UDP");
-	if (buffersize > 1421) throw exception("Overflow");
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
+	if (nuse_udp) throw ClientProtocolProcessorException("Uninitialized UDP");
+	if (buffersize > 1421) throw ClientProtocolProcessorException("Overflow");
 	mutex_udp_sender.lock();
 	if (packet_GroupingCounting) {
 		if (udp_counter != 4294967295) ++udp_counter;
@@ -106,6 +111,7 @@ void ClientProtocolProcessor::SendUDP(DistributionType distr, const char* buffer
 	udp_buffer[8] = *udp_buffer = buffersize & 0xFF;
 	udp_buffer[9] = udp_buffer[1] = buffersize >> 8 & 0xFF;
 	udp_buffer[2] = udp_mainTypeUserdata;
+#pragma warning (disable: 4806)
 	if (!distr) {
 		udp_buffer[10] = address;
 		udp_buffer[3] = 0 | packet_GroupingCounting | userdata4bits << 4;
@@ -113,6 +119,7 @@ void ClientProtocolProcessor::SendUDP(DistributionType distr, const char* buffer
 		udp_buffer[10] = unicast_address;
 		udp_buffer[3] = 2 | packet_GroupingCounting | userdata4bits << 4;
 	}
+#pragma warning (default: 4806)
 	memcpy(udp_buffer + 11, buffer, buffersize);
 	sendto(UDPConnectSocket, udp_buffer, buffersize + 11, 0, &UDPsendaddress, sizeof(UDPsendaddress));
 	mutex_udp_sender.unlock();
@@ -120,7 +127,7 @@ void ClientProtocolProcessor::SendUDP(DistributionType distr, const char* buffer
 
 bool ClientProtocolProcessor::ReceiveTCP(DistributionType &distr, char &unicast_address, char &userdatd4bits, char *&buffer, unsigned short &current_bufflen)
 {
-	if (uninitialised) throw exception("Uninitialized");
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
 	mutex_tcp_receiver.lock();
 systemexec:
 	if (recv(TCPConnectSocket, header_tcp_buffer, 5, 0) == 5) {
@@ -168,7 +175,7 @@ systemexec:
 				recv(TCPConnectSocket, buffer, temp, 0);
 				break;
 			case 4:
-				udp_counter = 0;
+				udp_rec_counter = 0;
 				goto systemexec;
 				break;
 			}
@@ -177,7 +184,7 @@ systemexec:
 		} else {
 			Finalise();
 			mutex_tcp_receiver.unlock();
-			throw exception("Uncorrect packet");
+			throw ClientProtocolProcessorException("Uncorrect packet");
 		}
 	} else {
 		Finalise();
@@ -187,7 +194,7 @@ systemexec:
 }
 
 void ClientProtocolProcessor::SendTCPSpecial(DistributionType specialReceiveType, char address) {
-	if (uninitialised) throw exception("Uninitialized");
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
 	mutex_tcp_special_sender.lock();
 	if (specialReceiveType != DistributionType::ReceiveSpecilalTCP_Indexes) {
 		*tcp_special_buffer = tcp_special_buffer[3] = 1;
@@ -204,10 +211,10 @@ void ClientProtocolProcessor::SendTCPSpecial(DistributionType specialReceiveType
 }
 
 void ClientProtocolProcessor::Finalise() {
-	if (uninitialised) throw exception("Uninitialized");
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
 	shutdown(TCPConnectSocket, SD_BOTH);
 	closesocket(TCPConnectSocket);
-	if (nuse_udp) { 
+	if (!nuse_udp) { 
 		closesocket(UDPConnectSocket);
 		delete[] udp_buffer;
 		delete[] udp_buffer_receive;
@@ -217,17 +224,18 @@ void ClientProtocolProcessor::Finalise() {
 }
 
 void ClientProtocolProcessor::ReceiveEveryUDP(DistributionType &distr, char &udp_mainTypeUserdata, char &userdatd4bits, char *buffer, unsigned short &current_bufflen, char &unicast_address) {
-	if (uninitialised) throw exception("Uninitialized");
-	if (udp_listening) throw exception("UDP already listening");
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
+	if (nuse_udp) throw ClientProtocolProcessorException("Uninitialized UDP");
+	if (udp_listening) throw ClientProtocolProcessorException("UDP already listening");
 	udp_listening = true;
 systemexec:
 	if ((current_bufflen = recvfrom(UDPConnectSocket, udp_buffer_receive, 1432, 0, nullptr, nullptr)) != SOCKET_ERROR) {
 		if (*udp_buffer_receive != udp_buffer_receive[8] || udp_buffer_receive[1] != udp_buffer_receive[9]) goto systemexec;
-		if ((udp_buffer_receive[3] & 0xC) != 0) goto systemexec;
+		if (!(udp_buffer_receive[3] & 0xC)) goto systemexec;
 		current_bufflen -= 11;
 		userdatd4bits = (header_tcp_buffer[3] & 0xF0) >> 4;
 		udp_mainTypeUserdata = header_tcp_buffer[2];
-		if ((udp_buffer_receive[3] & 0x2) == 2) {
+		if (udp_buffer_receive[3] & 0x2) {
 			distr = DistributionType::Unicast;
 			unicast_address = header_tcp_buffer[10];
 		} else 
@@ -237,8 +245,102 @@ systemexec:
 	} else goto systemexec;
 }
 
+void CClient::ClientProtocolProcessor::UdpServerThread(UDPReceiverCallback callback) {
+	chrono::steady_clock::time_point tpoint = chrono::steady_clock::now();
+	chrono::steady_clock::duration ctime;
+	vector<UDPacketStand>::iterator startpstand;
+	unordered_map<char, UDPacketTimed>::iterator startp, endp;
+	while (thread_ncancelled) {
+		mutex_udp_server_proc.lock();
+		for (startp = udp_queue_timed.begin(), endp = udp_queue_timed.end(); startp != endp; ++startp)
+			callback((DistributionType)(startp->second.control & 0x1), startp->first, startp->second.control >> 4, startp->second.buffer, startp->second.bufflen, startp->second.addr);
+		for (startpstand = udp_queue_stand.begin(); startpstand != udp_start_stand; ++startpstand)
+			callback((DistributionType)(startpstand->control & 0x1), startpstand->type, startpstand->control >> 4, startpstand->buffer, startpstand->bufflen, startpstand->addr);
+		udp_start_stand = udp_queue_stand.begin();
+		udp_queue_timed.clear();
+		udp_end_timed = udp_queue_timed.end();
+		mutex_udp_server_proc.unlock();
+		ctime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - tpoint);
+		if (ctime < 50ms) this_thread::sleep_for(50ms - ctime);
+	}
+	thread_release.lock();
+	if (thread_released[1]) { udp_queue_timed.clear(); udp_queue_stand.clear(); udp_queue_timed.rehash(0); udp_queue_stand.shrink_to_fit(); udp_listening = false; }
+	else thread_released[0] = true;
+	thread_release.unlock();
+}
+
+void CClient::ClientProtocolProcessor::UdpServerRecUDPThread() {
+	unsigned short udp_temp_len; char temp1; unsigned temp2;
+	std::unordered_map<char, UDPacketTimed>::iterator temp3;
+	while (thread_ncancelled) {
+		if ((udp_temp_len = recvfrom(UDPConnectSocket, udp_buffer_receive, 1432, 0, nullptr, nullptr)) != SOCKET_ERROR) {
+			if (*udp_buffer_receive != udp_buffer_receive[8] || udp_buffer_receive[1] != udp_buffer_receive[9]) continue;
+			temp1 = udp_buffer_receive[3];
+			if (temp1 & 0xC) continue;
+			mutex_udp_server_proc.lock();
+			if (temp1 & 0x1) {
+				if ((temp3 = udp_queue_timed.find(udp_buffer_receive[2])) == udp_end_timed) {
+					udp_rec_counter = ((unsigned char)udp_buffer_receive[4] << 24 | (unsigned char)udp_buffer_receive[5] << 16 | (unsigned char)udp_buffer_receive[6] << 8 | (unsigned char)udp_buffer_receive[7]);
+					udp_queue_timed.emplace(udp_buffer_receive[2], UDPacketTimed(udp_buffer_receive[10], temp1, new char[udp_temp_len -= 11], udp_temp_len));
+					memcpy((udp_end_timed = --udp_queue_timed.end())->second.buffer, udp_buffer_receive + 11, udp_temp_len);
+				} else {
+					temp2 = ((unsigned char)udp_buffer_receive[4] << 24 | (unsigned char)udp_buffer_receive[5] << 16 | (unsigned char)udp_buffer_receive[6] << 8 | (unsigned char)udp_buffer_receive[7]);
+					if (temp2 >= udp_rec_counter && temp2 - udp_rec_counter < INT_MAX) {
+						temp3->second.addr = udp_buffer_receive[10];
+						temp3->second.control = temp1;
+						udp_rec_counter = temp2;
+						temp3->second.bufflen = udp_temp_len -= 11;
+						delete[] temp3->second.buffer;
+						temp3->second.buffer = new char[udp_temp_len];
+						memcpy(temp3->second.buffer, udp_buffer_receive + 11, udp_temp_len);
+					}
+				}
+			} else {
+				if (udp_start_stand == udp_end_stand) {
+					udp_queue_stand.emplace_back(header_tcp_buffer[2], header_tcp_buffer[10], temp1, new char[udp_temp_len -= 11], udp_temp_len);
+					memcpy(((udp_end_stand = udp_start_stand = udp_queue_stand.end()) - 1)->buffer, udp_buffer_receive + 11, udp_temp_len);
+				} else {
+					udp_start_stand->type = header_tcp_buffer[2];
+					udp_start_stand->control = temp1;
+					udp_start_stand->addr = header_tcp_buffer[10];
+					udp_start_stand->bufflen = udp_temp_len -= 11;
+					udp_start_stand->buffer = new char[udp_temp_len];
+					memcpy(udp_start_stand->buffer, udp_buffer_receive + 11, udp_temp_len);
+					++udp_start_stand;
+				}
+			}
+			mutex_udp_server_proc.unlock();
+		}
+	}
+	thread_release.lock();
+	if (thread_released[0]) { udp_queue_timed.clear(); udp_queue_stand.clear(); udp_queue_timed.rehash(0); udp_queue_stand.shrink_to_fit(); udp_listening = false; }
+	else thread_released[1] = true;
+	thread_release.unlock();
+}
+
+bool CClient::ClientProtocolProcessor::StartUDPReceiveServer(UDPReceiverCallback callback) {
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
+	if (nuse_udp) throw ClientProtocolProcessorException("Uninitialized UDP");
+	if (udp_listening) return false;
+	udp_listening = thread_ncancelled = true;
+	thread_released[0] = thread_released[1] = false;
+	udp_end_stand = udp_start_stand = udp_queue_stand.end();
+	udp_end_timed = udp_queue_timed.end();
+	udp_server_thread = thread([&]() { UdpServerThread(callback); });
+	udp_server_rec_thread = thread([&]() { UdpServerRecUDPThread(); });
+	return true;
+}
+
+bool CClient::ClientProtocolProcessor::StopUDPReceiveServer() {
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
+	if (nuse_udp) throw ClientProtocolProcessorException("Uninitialized UDP");
+	if (!thread_ncancelled) return false;
+	thread_ncancelled = false;
+	return true;
+}
+
 char ClientProtocolProcessor::GetMyAddress() {
-	if (uninitialised) throw exception("Uninitialized");
+	if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
 	return address;
 }
 
