@@ -76,7 +76,7 @@ namespace GCS //Game Commutation Server
             }
         }
 
-        byte[] UDP_established_actualiser = new byte[] { 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0 };
+        byte[] UDP_established_actualiser = new byte[] { 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0 };
         void UDP_established(object s) {
             for (ushort i = 0; i != clients.Count; ++i) {
                 if (clients[i].active && clients[i].protocols.udp.actualIP != null)
@@ -261,28 +261,31 @@ namespace GCS //Game Commutation Server
             Stopwatch stw = new Stopwatch();
             byte[] buffer = new byte[1432]; ushort readbytes;
             uint my_time = time; byte more40 = 0;
-            while (true) {
-                stw.Restart();
-                if (my_time == time) {
-                    if (UDPreceiveQueue.Count > 40) {
-                        ++more40;
-                        if (more40 == 40) {
-                            Console.WriteLine("[i] Add UDP processing worker");
-                            tfactory.StartNew(() => ReceivedUDPprocessing());
+            while (true)
+                try {
+                    while (true) {
+                        stw.Restart();
+                        if (my_time == time) {
+                            if (UDPreceiveQueue.Count > 40) {
+                                ++more40;
+                                if (more40 == 40) {
+                                    Console.WriteLine("[i] Add UDP processing worker");
+                                    tfactory.StartNew(() => ReceivedUDPprocessing());
+                                }
+                            } else more40 = 0;
+                        } else my_time = time;
+                        while (UDPSocket.Available != 0) {
+                            readbytes = (ushort)UDPSocket.ReceiveFrom(buffer, 1432, SocketFlags.None, ref remoteIP);
+                            if (readbytes >= 11) {
+                                if (buffer[0] == buffer[8] && buffer[1] == buffer[9] && BitConverter.ToUInt16(buffer, 0) == readbytes - 11) {
+                                    UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, buffer.Take(readbytes)));
+                                }
+                            }
                         }
-                    } else more40 = 0;
-                } else my_time = time;
-                while (UDPSocket.Available != 0) {
-                    readbytes = (ushort)UDPSocket.ReceiveFrom(buffer, 1432, SocketFlags.None,  ref remoteIP);
-                    if (readbytes >= 11) {
-                        if (buffer[0] == buffer[8] && buffer[1] == buffer[9] && BitConverter.ToUInt16(buffer, 0) == readbytes - 11) {
-                            UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, buffer.Take(readbytes)));
-                        }
+                        stw.Stop();
+                        if (stw.ElapsedMilliseconds < 15) Thread.Sleep((int)(15 - stw.ElapsedMilliseconds));
                     }
-                }
-                stw.Stop();
-                if (stw.ElapsedMilliseconds < 15) Thread.Sleep((int)(15 - stw.ElapsedMilliseconds));
-            }
+                } catch { }
         }
 
         void ReceivedUDPprocessing() {
