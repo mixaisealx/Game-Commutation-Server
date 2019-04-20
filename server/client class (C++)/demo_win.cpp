@@ -55,6 +55,11 @@ void sock_shutdown_tcp(SOCKET &socket) {
 	shutdown(socket, SD_BOTH);
 }
 
+bool sock_enable_keepalive_tcp(SOCKET &socket) {
+	const bool tr = true;
+	return setsockopt(socket, SOL_SOCKET, SO_KEEPALIVE, (char *)&tr, sizeof(tr)) != SOCKET_ERROR;
+}
+
 void callback_udp(CClient::ClientProtocolProcessor<SOCKET, INVALID_SOCKET, SOCKET_ERROR, sockaddr>::DistributionType distr, char udp_mainTypeUserdata, char userdatd4bits, char *buffer, unsigned short current_bufflen, char unicast_address) {
 	std::cout << "received udp: " << current_bufflen <<  " first char: "<< *buffer << std::endl;
 }
@@ -76,6 +81,7 @@ void start()
 	func.send_tcp = sock_send_tcp;
 	func.send_udp = sock_send_udp;
 	func.shutdown_tcp = sock_shutdown_tcp;
+	func.enable_keepalive_tcp = sock_enable_keepalive_tcp;
 
 	CClient::ClientProtocolProcessor<SOCKET, INVALID_SOCKET, SOCKET_ERROR, sockaddr> client(func);
 	if (!client.Initialise("127.0.0.1", 2024)) {
