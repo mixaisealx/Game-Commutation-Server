@@ -21,6 +21,7 @@ namespace CClient {
 	struct ClientProtocolProcessorFunctions {
 		using FuncPrepareSocketToConnection = bool(*) (address_t &address, const char* text_addr, unsigned short port);
 		using FuncConnectSocketTCP = bool(*) (socket_t &socket, address_t &address);
+		using FuncEnableKeepAliveTCP = bool(*) (socket_t &socket);
 
 		using FuncCreateStreamTCPsocket = void(*) (socket_t &socket);
 		using FuncCreateUDPsocket = void(*) (socket_t &socket);
@@ -42,12 +43,13 @@ namespace CClient {
 		FuncSendtoUDP send_udp;
 		FuncReceiveTCP recv_tcp;
 		FuncReceivefromUDP recv_udp;
+		FuncEnableKeepAliveTCP enable_keepalive_tcp;
 
 		ClientProtocolProcessorFunctions() {}
 		ClientProtocolProcessorFunctions(FuncPrepareSocketToConnection prepare_conn, FuncCreateStreamTCPsocket create_tcp, FuncConnectSocketTCP conn_tcp, FuncShutdownTCPSocketBoth shutdown_tcp, 
-			FuncCreateUDPsocket create_udp, FuncCloseSocket close, FuncSendTCP send_tcp, FuncReceiveTCP recv_tcp, FuncSendtoUDP send_udp, FuncReceivefromUDP recv_udp):
+			FuncCreateUDPsocket create_udp, FuncCloseSocket close, FuncSendTCP send_tcp, FuncReceiveTCP recv_tcp, FuncSendtoUDP send_udp, FuncReceivefromUDP recv_udp, FuncEnableKeepAliveTCP enable_keepalive_tcp):
 			prepare_conn(prepare_conn), create_tcp(create_tcp), conn_tcp(conn_tcp), shutdown_tcp(shutdown_tcp), create_udp(create_udp), close(close), 
-			send_tcp(send_tcp), recv_tcp(recv_tcp), send_udp(send_udp), recv_udp(recv_udp) {}
+			send_tcp(send_tcp), recv_tcp(recv_tcp), send_udp(send_udp), recv_udp(recv_udp), enable_keepalive_tcp(enable_keepalive_tcp){}
 	};
 
 	template<typename socket_t, socket_t invalid_variant, int socket_error, typename address_t>
@@ -68,6 +70,7 @@ namespace CClient {
 		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncConnectSocketTCP sock_conn_tcp;
 		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncShutdownTCPSocketBoth sock_shutdown_tcp;
 		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncPrepareSocketToConnection sock_prepare_conn;
+		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncEnableKeepAliveTCP sock_enable_keepalive_tcp;
 		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncSendTCP sock_send_tcp; typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncReceiveTCP sock_recv_tcp;
 		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncSendtoUDP sock_send_udp; typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncReceivefromUDP sock_recv_udp;
 		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncCreateStreamTCPsocket sock_create_tcp; typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncCreateUDPsocket sock_create_udp;
@@ -88,6 +91,7 @@ namespace CClient {
 			sock_conn_tcp = funcs.conn_tcp;
 			sock_shutdown_tcp = funcs.shutdown_tcp;
 			sock_prepare_conn = funcs.prepare_conn;
+			sock_enable_keepalive_tcp = funcs.enable_keepalive_tcp;
 			sock_send_tcp = funcs.send_tcp; sock_recv_tcp = funcs.recv_tcp;
 			sock_send_udp = funcs.send_udp; sock_recv_udp = funcs.recv_udp;
 			sock_create_tcp = funcs.create_tcp; sock_create_udp = funcs.create_udp;
@@ -102,7 +106,7 @@ namespace CClient {
 			if (!sock_prepare_conn(addrt, ipAddress, port)) { throw ClientProtocolProcessorException("Error on transforming 'const char*' to 'IP'"); }
 			sock_create_tcp(TCPConnectSocket);
 			if (TCPConnectSocket == invalid_variant) { throw ClientProtocolProcessorException("Can not create TCP socket"); }
-			if (!sock_conn_tcp(TCPConnectSocket, addrt)) { sock_close(TCPConnectSocket); return false; }
+			if (!(sock_conn_tcp(TCPConnectSocket, addrt) && sock_enable_keepalive_tcp(TCPConnectSocket))) { sock_close(TCPConnectSocket); return false; }
 			char addrbuf[6];
 			if (!func_tcp_receive(addrbuf, 6)) {
 				sock_shutdown_tcp(TCPConnectSocket);
