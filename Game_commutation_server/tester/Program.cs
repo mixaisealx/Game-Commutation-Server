@@ -39,6 +39,7 @@ namespace tester
             string mtext; ushort temp; byte tempb;
             byte[] sarr, narr;
             uint packetNumber = 0;
+            TCPSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
             while (TCPSocket.Connected)
             {
                 mtext = Console.ReadLine();
@@ -56,8 +57,16 @@ namespace tester
                         sarr[5] = byte.Parse(mtext.Substring(5, temp - 5));
                         Encoding.ASCII.GetBytes(mtext.Substring(temp + 1)).CopyTo(sarr, 6);
                         TCPSocket.Send(sarr);
-                    }
-                    else if (mtext.IndexOf("%inds") == 0)
+                    } else if (mtext.IndexOf("%uup") == 0) {
+                        tempb = byte.Parse(mtext.Substring(4, 1));
+                        sarr = new byte[mtext.Length + 5];
+                        narr = BitConverter.GetBytes((ushort)(mtext.Length - 6));
+                        narr.CopyTo(sarr, 0); narr.CopyTo(sarr, 8);
+                        sarr[2] = 0; sarr[3] = 2; sarr[10] = tempb;
+                        BitConverter.GetBytes(packetNumber++).CopyTo(sarr, 4);
+                        Encoding.ASCII.GetBytes(mtext.Substring(6)).CopyTo(sarr, 11);
+                        UDPSocket.SendTo(sarr, ipPoint);
+                    } else if (mtext.IndexOf("%inds") == 0)
                     {
                         sarr = new byte[] { 1, 0, 3, 1, 0, byte.Parse(mtext.Substring(5, mtext.Length - 5))};
                         TCPSocket.Send(sarr);

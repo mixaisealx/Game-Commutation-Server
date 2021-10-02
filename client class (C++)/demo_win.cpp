@@ -56,18 +56,27 @@ void sock_shutdown_tcp(SOCKET &socket) {
 }
 
 bool sock_enable_keepalive_tcp(SOCKET &socket) {
-	const bool tr = true;
-	return setsockopt(socket, SOL_SOCKET, SO_KEEPALIVE, (char *)&tr, sizeof(tr)) != SOCKET_ERROR;
+	const INT keepidle = 15;
+	const INT keepintvl = 15;
+	const INT keepcnt = 2;
+	const BOOL tr = true;
+	
+	if (setsockopt(socket, IPPROTO_TCP, TCP_KEEPIDLE, reinterpret_cast<const char *>(&keepidle), sizeof(INT)) == SOCKET_ERROR
+		|| setsockopt(socket, IPPROTO_TCP, TCP_KEEPINTVL, reinterpret_cast<const char *>(&keepintvl), sizeof(INT)) == SOCKET_ERROR
+		|| setsockopt(socket, IPPROTO_TCP, TCP_KEEPCNT, reinterpret_cast<const char *>(&keepcnt), sizeof(INT)) == SOCKET_ERROR
+		|| setsockopt(socket, SOL_SOCKET, SO_KEEPALIVE, reinterpret_cast<const char *>(&tr), sizeof(BOOL)) == SOCKET_ERROR)
+		return false;
+	return true;
 }
 
 void callback_udp(CClient::ClientProtocolProcessor<SOCKET, INVALID_SOCKET, SOCKET_ERROR, sockaddr>::DistributionType distr, char udp_mainTypeUserdata, char userdatd4bits, char *buffer, unsigned short current_bufflen, char unicast_address) {
-	std::cout << "received udp: " << current_bufflen <<  " first char: "<< *buffer << std::endl;
+	std::cout << "received udp: " << current_bufflen << " first char: " << (current_bufflen == 0 ? '-' : *buffer) << std::endl;
 }
 
 void start()
 {
 	WSADATA wsaData;
-	if (WSAStartup(MAKEWORD(2, 2), &wsaData)) 
+	if (!WSAStartup(MAKEWORD(2, 2), &wsaData)) 
 		std::cout << "WSA started" << std::endl;
 
 	CClient::ClientProtocolProcessorFunctions<SOCKET, sockaddr> func;

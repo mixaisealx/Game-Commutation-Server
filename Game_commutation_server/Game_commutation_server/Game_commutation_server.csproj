@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Game_commutation_server</Authors>
     <Company>Game_commutation_server</Company>
     <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>Windows-icon.ico</ApplicationIcon>
   </PropertyGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace GCS //Game Commutation Server
 
     public class Server {
         class UDPacket { public UDPacket(byte[] data) { this.data = data; } public byte[] data; };
-        class UDPpackets { public volatile EndPoint actualIP; public uint sendertime = 0; public volatile Dictionary<byte, UDPacket> broadcast_timed = new Dictionary<byte, UDPacket>(), unicast_timed = new Dictionary<byte, UDPacket>(); public volatile List<UDPacket> broadcast_stand = new List<UDPacket>(), unicast_stand = new List<UDPacket>(); };
+        class UDPpackets { public volatile IPEndPoint actualIP; public uint sendertime = 0; public volatile Dictionary<byte, UDPacket> broadcast_timed = new Dictionary<byte, UDPacket>(), unicast_timed = new Dictionary<byte, UDPacket>(); public volatile List<UDPacket> broadcast_stand = new List<UDPacket>(), unicast_stand = new List<UDPacket>(); };
         class TCPBySendType { public List<byte[]> broadcast = new List<byte[]>(); public volatile List<byte[]> unicast = new List<byte[]>(); };
         class PacketByProtocol { public volatile TCPBySendType tcp = new TCPBySendType(); public volatile UDPpackets udp = new UDPpackets(); };
         class Client { public volatile bool active = true, notsent = false; public volatile PacketByProtocol protocols = new PacketByProtocol(); };
@@ -25,8 +25,9 @@ namespace GCS //Game Commutation Server
         void TimerCallback(object s) {
             if (time == uint.MaxValue) {
                 byte[] resetmsg = new byte[] { 0, 0, 4, 0, 0 };
-                for (ushort i = 0; i != clients.Count ; ++i) {
-                    clients[i].protocols.tcp.unicast.Add(resetmsg);
+                waitPacketClear.WaitOne(); //Needed for sync with TCP/UDP packet sender, most of time is Set
+                foreach (var item in clients) {
+                    item.protocols.tcp.unicast.Add(resetmsg);
                 }
                 time = 0;
             } else ++time;
@@ -76,9 +77,9 @@ namespace GCS //Game Commutation Server
 
         byte[] UDP_established_actualiser = new byte[] { 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0 };
         void UDP_established(object s) {
-            for (ushort i = 0; i != clients.Count; ++i) {
-                if (clients[i].active && clients[i].protocols.udp.actualIP != null)
-                    UDPSocket.SendTo(UDP_established_actualiser, clients[i].protocols.udp.actualIP);
+            foreach (var item in clients) {
+                if (item.active && item.protocols.udp.actualIP != null)
+                    UDPSocket.SendTo(UDP_established_actualiser, item.protocols.udp.actualIP);
             }
         }
         short HaveFreePlace() {
@@ -88,19 +89,24 @@ namespace GCS //Game Commutation Server
             return -1;
         }
         bool AllsendsComplete() {
-            for (ushort i = 0; i != clients.Count; ++i)
-                if (clients[i].active && clients[i].notsent)
+            foreach (var item in clients) {
+                if (item.active && item.notsent)
                     return false;
+            }
             return true;
         }
         bool AllReadyToSend() {
-            for (short i = 0; i != clients.Count; ++i)
-                if (clients[i].active && !clients[i].notsent)
+            foreach (var item in clients) {
+                if (item.active && !item.notsent)
                     return false;
+            }
             return true;
         }
         void ClientInterface(Socket client, byte index) {
-            //client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+            client.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveInterval, 15);
+            client.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveTime, 15);
+            client.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.TcpKeepAliveRetryCount, 2);
+            client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
             Client mecl = clients[index];
             {   //client notify block
                 //                      ushort len|com|ushort len|udp addr
@@ -108,8 +114,9 @@ namespace GCS //Game Commutation Server
             }
             byte[] TCPhead_buffer = new byte[5]; byte[] unicast_addr = new byte[1]; ushort readbytes;
             byte[] temp_buffer; byte[] indexstate = new byte[] { 1, 0, 3, 1, 0, 0 };
+            List<byte[]>.Enumerator enum_lb;
+            Dictionary<byte, UDPacket>.Enumerator enum_db;
             ushort msize; Client tclient;
-            Dictionary<byte, UDPacket>.Enumerator timedudp_enum;
             bool nwaitsend = true;
             Stopwatch stw = new Stopwatch();
             uint my_time = time;
@@ -169,38 +176,42 @@ namespace GCS //Game Commutation Server
                         ClientInterfaceThSend();
                         waitPacketSend.WaitOne();
                         nwaitsend = false;
-                        for (ushort i = 0; i != mecl.protocols.tcp.unicast.Count; ++i) {
-                            client.Send(mecl.protocols.tcp.unicast[i]);
+                        enum_lb = mecl.protocols.tcp.unicast.GetEnumerator();
+                        while (enum_lb.MoveNext()) {
+                            client.Send(enum_lb.Current);
                         }
                         if (mecl.protocols.udp.actualIP != null) {
                             for (ushort i = 0; i != clients.Count; ++i) {
                                 if (i != index && clients[i].active) {
                                     tclient = clients[i];
-                                    for (ushort i1 = 0; i1 != tclient.protocols.tcp.broadcast.Count; ++i1) {
-                                        client.Send(tclient.protocols.tcp.broadcast[i1]);
+                                    enum_lb = tclient.protocols.tcp.broadcast.GetEnumerator();
+                                    while (enum_lb.MoveNext()) {
+                                        client.Send(enum_lb.Current);
                                     }
-                                    timedudp_enum = tclient.protocols.udp.broadcast_timed.GetEnumerator();
-                                    do {
-                                        UDPSocket.SendTo(timedudp_enum.Current.Value.data, mecl.protocols.udp.actualIP);
-                                    } while (timedudp_enum.MoveNext());
-                                    for (ushort i1 = 0; i1 != tclient.protocols.udp.broadcast_stand.Count; ++i1) {
-                                        UDPSocket.SendTo(tclient.protocols.udp.broadcast_stand[i1].data, mecl.protocols.udp.actualIP);
+                                    enum_db = tclient.protocols.udp.broadcast_timed.GetEnumerator();
+                                    while (enum_db.MoveNext()) {
+                                        UDPSocket.SendTo(enum_db.Current.Value.data, mecl.protocols.udp.actualIP);
+                                    }
+                                    foreach (var item in tclient.protocols.udp.broadcast_stand) {
+                                        UDPSocket.SendTo(item.data, mecl.protocols.udp.actualIP);
                                     }
                                 }
                             }
-                            timedudp_enum = mecl.protocols.udp.unicast_timed.GetEnumerator();
-                            do {
-                                UDPSocket.SendTo(timedudp_enum.Current.Value.data, mecl.protocols.udp.actualIP);
-                            } while (timedudp_enum.MoveNext());
-                            for (ushort i = 0; i != mecl.protocols.udp.unicast_stand.Count; ++i) {
-                                UDPSocket.SendTo(mecl.protocols.udp.unicast_stand[i].data, mecl.protocols.udp.actualIP);
+                            enum_db = mecl.protocols.udp.unicast_timed.GetEnumerator();
+                            while (enum_db.MoveNext()) {
+                                UDPSocket.SendTo(enum_db.Current.Value.data, mecl.protocols.udp.actualIP);
+                            }
+                            foreach (var item in mecl.protocols.udp.unicast_stand) {
+                                UDPSocket.SendTo(item.data, mecl.protocols.udp.actualIP);
                             }
                         } else {
                             for (ushort i = 0; i != clients.Count; ++i) {
                                 if (i != index && clients[i].active) {
                                     tclient = clients[i];
-                                    for (ushort i1 = 0; i1 != tclient.protocols.tcp.broadcast.Count; ++i1) {
-                                        client.Send(tclient.protocols.tcp.broadcast[i1]);
+
+                                    enum_lb = tclient.protocols.tcp.broadcast.GetEnumerator();
+                                    while (enum_lb.MoveNext()) {
+                                        client.Send(enum_lb.Current);
                                     }
                                 }
                             }
@@ -260,8 +271,8 @@ namespace GCS //Game Commutation Server
                     waitPacketClear.Set();
                 }
         }
-        struct UDPReceived { public UDPReceived(EndPoint remoteIP, IEnumerable<byte> data) { this.remoteIP = remoteIP; this.data = data; } public EndPoint remoteIP; public IEnumerable<byte> data;  }
-        volatile Queue<UDPReceived> UDPreceiveQueue = new Queue<UDPReceived>();
+        struct UDPReceived { public UDPReceived(IPEndPoint remoteIP, byte[] data) { this.remoteIP = remoteIP; this.data = data; } public IPEndPoint remoteIP; public byte[] data;  }
+        ConcurrentQueue<UDPReceived> UDPreceiveQueue = new ConcurrentQueue<UDPReceived>();
         volatile Socket UDPSocket;
         void UDPreceiveInterface() {
             TaskFactory tfactory = new TaskFactory(TaskCreationOptions.LongRunning, TaskContinuationOptions.LongRunning);
@@ -277,8 +288,7 @@ namespace GCS //Game Commutation Server
                         stw.Restart();
                         if (my_time == time) {
                             if (UDPreceiveQueue.Count > 40) {
-                                ++more40;
-                                if (more40 == 40) {
+                                if (++more40 == 40) {
                                     Console.WriteLine("[i] Add UDP processing worker");
                                     tfactory.StartNew(() => ReceivedUDPprocessing());
                                 }
@@ -288,7 +298,7 @@ namespace GCS //Game Commutation Server
                             readbytes = (ushort)UDPSocket.ReceiveFrom(buffer, 1432, SocketFlags.None, ref remoteIP);
                             if (readbytes >= 11) {
                                 if (buffer[0] == buffer[8] && buffer[1] == buffer[9] && BitConverter.ToUInt16(buffer, 0) == readbytes - 11) {
-                                    UDPreceiveQueue.Enqueue(new UDPReceived(remoteIP, buffer.Take(readbytes)));
+                                    UDPreceiveQueue.Enqueue(new UDPReceived((IPEndPoint)remoteIP, buffer.Take(readbytes).ToArray()));
                                 }
                             }
                         }
@@ -348,12 +358,14 @@ namespace GCS //Game Commutation Server
                                             timestampb.CopyTo(databytes, 4);
                                             if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
                                                 tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                            waitPacketClear.WaitOne(); //Needed for sync with TCP/UDP packet sender, most of time is Set
                                             tclient.protocols.udp.broadcast_timed.Add(type, new UDPacket(databytes));
                                         }
                                         udp_type_processing[type] = false;
                                     } else { //no use timestamps
                                         if (clients[addr].protocols.udp.actualIP != udprcv.remoteIP)
                                             clients[addr].protocols.udp.actualIP = udprcv.remoteIP;
+                                        waitPacketClear.WaitOne(); //Needed for sync with TCP/UDP packet sender, most of time is Set
                                         clients[addr].protocols.udp.broadcast_stand.Add(new UDPacket(databytes));
                                     }
                                 } else { //unicast
@@ -374,22 +386,18 @@ namespace GCS //Game Commutation Server
                                                     tclient.protocols.udp.sendertime = timestamp;
                                                     timestampb = BitConverter.GetBytes(time);
                                                     timestampb.CopyTo(databytes, 4);
-                                                    if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
-                                                        tclient.protocols.udp.actualIP = udprcv.remoteIP;
                                                     tclient.protocols.udp.unicast_timed[type].data = databytes;
                                                 }
                                             }
                                         } else {
                                             timestampb = BitConverter.GetBytes(time);
                                             timestampb.CopyTo(databytes, 4);
-                                            if (tclient.protocols.udp.actualIP != udprcv.remoteIP)
-                                                tclient.protocols.udp.actualIP = udprcv.remoteIP;
+                                            waitPacketClear.WaitOne(); //Needed for sync with TCP/UDP packet sender, most of time is Set
                                             tclient.protocols.udp.unicast_timed.Add(type, new UDPacket(databytes));
                                         }
                                         udp_type_processing[type] = false;
                                     } else { //no use timestamps
-                                        if (clients[addr].protocols.udp.actualIP != udprcv.remoteIP)
-                                            clients[addr].protocols.udp.actualIP = udprcv.remoteIP;
+                                        waitPacketClear.WaitOne(); //Needed for sync with TCP/UDP packet sender, most of time is Set
                                         clients[addr].protocols.udp.unicast_stand.Add(new UDPacket(databytes));
                                     }
                                 }

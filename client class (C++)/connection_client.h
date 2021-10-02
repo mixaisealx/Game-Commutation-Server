@@ -61,9 +61,9 @@ namespace CClient {
 		char header_tcp_buffer[5], tcp_special_buffer[6];
 		unsigned char address; address_t UDPsendaddress;
 		unsigned udp_counter = 0, udp_rec_counter = 0;
-		std::mutex mutex_tcp_sender, mutex_tcp_receiver, mutex_udp_sender, mutex_tcp_special_sender, thread_release, mutex_udp_server_proc;
+		std::mutex mutex_tcp_sender, mutex_tcp_receiver, mutex_udp_sender, mutex_tcp_special_sender, mutex_udp_server_proc;
 		ClientProtocolProcessor(const ClientProtocolProcessor&);
-		ClientProtocolProcessor operator=(const ClientProtocolProcessor&) { };
+		ClientProtocolProcessor operator=(const ClientProtocolProcessor&);
 		std::thread udp_server_thread, udp_server_rec_thread; bool thread_ncancelled, thread_released[2];
 
 		typename ClientProtocolProcessorFunctions<socket_t, address_t>::FuncCloseSocket sock_close;
@@ -216,7 +216,7 @@ namespace CClient {
 						} else current_bufflen = temp;
 						distr = DistributionType::Broadcast;
 						userdatd4bits = (header_tcp_buffer[2] & 0xF0) >> 4;
-						if (!func_tcp_receive(buffer, temp)) goto error;
+						if (temp && !func_tcp_receive(buffer, temp)) goto error;
 						break;
 					case 2:
 						if ((temp = (*header_tcp_buffer | header_tcp_buffer[1] << 8) - 1) > current_bufflen) {
@@ -228,7 +228,7 @@ namespace CClient {
 						userdatd4bits = (header_tcp_buffer[2] & 0xF0) >> 4;
 						if (sock_recv_tcp(TCPConnectSocket, &tempaddrbuff, 1) != 1) goto error;
 						unicast_address = tempaddrbuff;
-						if (!func_tcp_receive(buffer, temp)) goto error;
+						if (temp && !func_tcp_receive(buffer, temp)) goto error;
 						break;
 					case 3:
 						distr = DistributionType::ReceiveSpecilalTCP_State;
@@ -237,7 +237,7 @@ namespace CClient {
 							current_bufflen = 1;
 							buffer = new char[1];
 						} else current_bufflen = 0;
-						if (!func_tcp_receive(buffer, temp)) goto error;
+						if (!func_tcp_receive(buffer, 1)) goto error;
 						break;
 					case 1:
 						distr = DistributionType::ReceiveSpecilalTCP_Indexes;
@@ -246,7 +246,7 @@ namespace CClient {
 							current_bufflen = temp;
 							buffer = new char[temp];
 						} else  current_bufflen = temp;
-						if (!func_tcp_receive(buffer, temp)) goto error;
+						if (temp && !func_tcp_receive(buffer, temp)) goto error;
 						break;
 					case 4:
 						udp_rec_counter = 0;
@@ -258,8 +258,8 @@ namespace CClient {
 				} else {
 				error:
 					mutex_tcp_receiver.unlock();
-					throw ClientProtocolProcessorException("Uncorrect packet");
 					Finalise();
+					return false;
 				}
 			} else {
 				mutex_tcp_receiver.unlock();
@@ -287,40 +287,54 @@ namespace CClient {
 		//Calls allowed only from ONE thread
 		//"current_bufflen" - length of data on return
 		//Size of buffer must be 1421 byte (more is possible, less is not).
-		void ReceiveEveryUDP(DistributionType &distr, char &udp_mainTypeUserdata, char &userdatd4bits, char *buffer, unsigned short &datalen, char &unicast_address) {
+		void ReceiveEveryUDP(DistributionType &distr, char &udp_mainTypeUserdata, char &userdatd4bits, char *buffer, unsigned short &datalen, char &broadcast_sender_address) {
 			if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
 			if (nuse_udp) throw ClientProtocolProcessorException("Uninitialized UDP");
-			if (udp_listening) throw ClientProtocolProcessorException("UDP already listening");
+			mutex_udp_server_proc.lock();
+			if (udp_listening) {
+				mutex_udp_server_proc.unlock();
+				throw ClientProtocolProcessorException("UDP already listening");
+			}
 			udp_listening = true;
 		systemexec:
 			if ((datalen = sock_recv_udp(UDPConnectSocket, udp_buffer_receive, 1432)) != socket_error) {
 				if (*udp_buffer_receive != udp_buffer_receive[8] || udp_buffer_receive[1] != udp_buffer_receive[9]) goto systemexec;
-				if (!(udp_buffer_receive[3] & 0xC)) goto systemexec;
+				if (udp_buffer_receive[3] & 0xC) goto systemexec;
 				datalen -= 11;
-				userdatd4bits = (header_tcp_buffer[3] & 0xF0) >> 4;
-				udp_mainTypeUserdata = header_tcp_buffer[2];
+				userdatd4bits = (udp_buffer_receive[3] & 0xF0) >> 4;
+				udp_mainTypeUserdata = udp_buffer_receive[2];
 				if (udp_buffer_receive[3] & 0x2) {
 					distr = DistributionType::Unicast;
-					unicast_address = header_tcp_buffer[10];
-				} else
+				} else {
 					distr = DistributionType::Broadcast;
+					broadcast_sender_address = udp_buffer_receive[10];
+				}
 				memcpy(buffer, udp_buffer_receive + 11, datalen);
 				udp_listening = false;
-			} else goto systemexec;
+			} else 
+				goto systemexec;
+			mutex_udp_server_proc.unlock();
 		}
-		using UDPReceiverCallback = void(*) (DistributionType distr, char udp_mainTypeUserdata, char userdatd4bits, char *buffer, unsigned short datalen, char unicast_address);
+		using UDPReceiverCallback = void(*) (DistributionType distr, char udp_mainTypeUserdata, char userdatd4bits, char *buffer, unsigned short datalen, char broadcast_sender_address);
+		typename UDPReceiverCallback udp_receiver_callback;
 		//Calls for UDP RECEIVE allowed only from ONE thread
 		//Start listening UDP in this class. This listening server implements all protocol functions (regarding UDP) independently.
 		//In the standard situation in this server is not necessary. However, it can be useful if you only need to accept the latest UDP (the old ones so that they are not ahead of the new ones). However, taking into account the delay of 50ms, there is a considerable likelihood of some ordering of packet arrival.
 		bool StartUDPReceiveServer(UDPReceiverCallback callback) {
 			if (uninitialised) throw ClientProtocolProcessorException("Uninitialized");
 			if (nuse_udp) throw ClientProtocolProcessorException("Uninitialized UDP");
-			if (udp_listening) return false;
+			mutex_udp_server_proc.lock();
+			if (udp_listening) {
+				mutex_udp_server_proc.unlock();
+				return false;
+			}
 			udp_listening = thread_ncancelled = true;
+			mutex_udp_server_proc.unlock();
 			thread_released[0] = thread_released[1] = false;
 			udp_end_stand = udp_start_stand = udp_queue_stand.end();
 			udp_end_timed = udp_queue_timed.end();
-			udp_server_thread = std::thread([&]() { UdpServerThread(callback); });
+			udp_receiver_callback = callback;
+			udp_server_thread = std::thread([&]() { UdpServerThread(); });
 			udp_server_rec_thread = std::thread([&]() { UdpServerRecUDPThread(); });
 			return true;
 		}
@@ -352,22 +366,35 @@ namespace CClient {
 			uninitialised = true;
 		}
 	private:
-		struct UDPacketStand { UDPacketStand(const char type, const char addr, const char control, char *buffer, const unsigned short bufflen) :type(type), addr(addr), control(control), buffer(buffer), bufflen(bufflen) {} char type, addr, control, *buffer; unsigned short bufflen; };
-		struct UDPacketTimed { UDPacketTimed(char addr, char control, char *buffer, unsigned short bufflen) :addr(addr), control(control), buffer(buffer), bufflen(bufflen) {} char addr, control, *buffer; unsigned short bufflen; };
+		struct UDPacketStand {
+			UDPacketStand(const char type, const char addr, const char control, char *buffer, const unsigned short bufflen):type(type), addr(addr), control(control), buffer(buffer), bufflen(bufflen) {}
+			unsigned short bufflen; char type, addr, control, *buffer;
+			~UDPacketStand() {
+				delete[] buffer;
+			}
+		};
+		struct UDPacketTimed {
+			UDPacketTimed(char addr, char control, char *buffer, unsigned short bufflen):addr(addr), control(control), buffer(buffer), bufflen(bufflen) {}
+			unsigned short bufflen; char addr, control, *buffer;
+			~UDPacketTimed() {
+				delete[] buffer;
+			}
+		};
 		std::vector<UDPacketStand> udp_queue_stand; typename std::vector<UDPacketStand>::iterator udp_start_stand, udp_end_stand;
 		std::unordered_map<char, UDPacketTimed> udp_queue_timed; typename std::unordered_map<char, UDPacketTimed>::iterator udp_end_timed;
 
-		void UdpServerThread(UDPReceiverCallback callback) {
+		void UdpServerThread() {
 			std::chrono::steady_clock::time_point tpoint = std::chrono::steady_clock::now();
 			std::chrono::steady_clock::duration ctime, duration50 = std::chrono::milliseconds(50);
-			std::vector<UDPacketStand>::iterator startpstand;
-			std::unordered_map<char, UDPacketTimed>::iterator startp, endp;
+			typename std::vector<UDPacketStand>::iterator startpstand;
+			typename std::unordered_map<char, UDPacketTimed>::iterator startp, endp;
 			while (thread_ncancelled) {
 				mutex_udp_server_proc.lock();
-				for (startp = udp_queue_timed.begin(), endp = udp_queue_timed.end(); startp != endp; ++startp)
-					callback((DistributionType)(startp->second.control & 0x1), startp->first, startp->second.control >> 4, startp->second.buffer, startp->second.bufflen, startp->second.addr);
-				for (startpstand = udp_queue_stand.begin(); startpstand != udp_start_stand; ++startpstand)
-					callback((DistributionType)(startpstand->control & 0x1), startpstand->type, startpstand->control >> 4, startpstand->buffer, startpstand->bufflen, startpstand->addr);
+				for (startp = udp_queue_timed.begin(), endp = udp_queue_timed.end(); startp != endp; ++startp) 
+					udp_receiver_callback((DistributionType)(startp->second.control & 0x1), startp->first, startp->second.control >> 4, startp->second.buffer, startp->second.bufflen, startp->second.addr);
+				for (startpstand = udp_queue_stand.begin(); startpstand != udp_start_stand; ++startpstand) 
+					udp_receiver_callback((DistributionType)(startpstand->control & 0x1), startpstand->type, startpstand->control >> 4, startpstand->buffer, startpstand->bufflen, startpstand->addr);
+				
 				udp_start_stand = udp_queue_stand.begin();
 				udp_queue_timed.clear();
 				udp_end_timed = udp_queue_timed.end();
@@ -375,14 +402,14 @@ namespace CClient {
 				ctime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - tpoint);
 				if (ctime < duration50) std::this_thread::sleep_for(duration50 - ctime);
 			}
-			thread_release.lock();
+			mutex_udp_server_proc.lock();
 			if (thread_released[1]) { udp_queue_timed.clear(); udp_queue_stand.clear(); udp_queue_timed.rehash(0); udp_queue_stand.shrink_to_fit(); udp_listening = false; } else thread_released[0] = true;
-			thread_release.unlock();
+			mutex_udp_server_proc.unlock();
 		}
 
 		void UdpServerRecUDPThread() {
 			unsigned short udp_temp_len; char temp1; unsigned temp2;
-			std::unordered_map<char, UDPacketTimed>::iterator temp3;
+			typename std::unordered_map<char, UDPacketTimed>::iterator temp3;
 			while (thread_ncancelled) {
 				if ((udp_temp_len = sock_recv_udp(UDPConnectSocket, udp_buffer_receive, 1432)) != socket_error) {
 					if (*udp_buffer_receive != udp_buffer_receive[8] || udp_buffer_receive[1] != udp_buffer_receive[9]) continue;
@@ -392,7 +419,8 @@ namespace CClient {
 					if (temp1 & 0x1) {
 						if ((temp3 = udp_queue_timed.find(udp_buffer_receive[2])) == udp_end_timed) {
 							udp_rec_counter = ((unsigned char)udp_buffer_receive[4] << 24 | (unsigned char)udp_buffer_receive[5] << 16 | (unsigned char)udp_buffer_receive[6] << 8 | (unsigned char)udp_buffer_receive[7]);
-							udp_queue_timed.emplace(udp_buffer_receive[2], UDPacketTimed(udp_buffer_receive[10], temp1, new char[udp_temp_len -= 11], udp_temp_len));
+							udp_temp_len -= 11;
+							udp_queue_timed.emplace(udp_buffer_receive[2], UDPacketTimed(udp_buffer_receive[10], temp1, new char[udp_temp_len], udp_temp_len));
 							memcpy((udp_end_timed = --udp_queue_timed.end())->second.buffer, udp_buffer_receive + 11, udp_temp_len);
 						} else {
 							temp2 = ((unsigned char)udp_buffer_receive[4] << 24 | (unsigned char)udp_buffer_receive[5] << 16 | (unsigned char)udp_buffer_receive[6] << 8 | (unsigned char)udp_buffer_receive[7]);
@@ -400,22 +428,28 @@ namespace CClient {
 								temp3->second.addr = udp_buffer_receive[10];
 								temp3->second.control = temp1;
 								udp_rec_counter = temp2;
-								temp3->second.bufflen = udp_temp_len -= 11;
-								delete[] temp3->second.buffer;
-								temp3->second.buffer = new char[udp_temp_len];
+								if (temp3->second.bufflen < (udp_temp_len -= 11)) {
+									delete[] temp3->second.buffer;
+									temp3->second.buffer = new char[udp_temp_len];
+								}
+								temp3->second.bufflen = udp_temp_len;
 								memcpy(temp3->second.buffer, udp_buffer_receive + 11, udp_temp_len);
 							}
 						}
 					} else {
 						if (udp_start_stand == udp_end_stand) {
-							udp_queue_stand.emplace_back(header_tcp_buffer[2], header_tcp_buffer[10], temp1, new char[udp_temp_len -= 11], udp_temp_len);
+							udp_temp_len -= 11;
+							udp_queue_stand.emplace_back(udp_buffer_receive[2], udp_buffer_receive[10], temp1, new char[udp_temp_len], udp_temp_len);
 							memcpy(((udp_end_stand = udp_start_stand = udp_queue_stand.end()) - 1)->buffer, udp_buffer_receive + 11, udp_temp_len);
 						} else {
-							udp_start_stand->type = header_tcp_buffer[2];
+							udp_start_stand->type = udp_buffer_receive[2];
 							udp_start_stand->control = temp1;
-							udp_start_stand->addr = header_tcp_buffer[10];
-							udp_start_stand->bufflen = udp_temp_len -= 11;
-							udp_start_stand->buffer = new char[udp_temp_len];
+							udp_start_stand->addr = udp_buffer_receive[10];
+							if (udp_start_stand->bufflen < (udp_temp_len -= 11)) {
+								delete[] udp_start_stand->buffer;
+								udp_start_stand->buffer = new char[udp_temp_len];
+							}
+							udp_start_stand->bufflen = udp_temp_len;
 							memcpy(udp_start_stand->buffer, udp_buffer_receive + 11, udp_temp_len);
 							++udp_start_stand;
 						}
@@ -423,9 +457,9 @@ namespace CClient {
 					mutex_udp_server_proc.unlock();
 				}
 			}
-			thread_release.lock();
+			mutex_udp_server_proc.lock();
 			if (thread_released[0]) { udp_queue_timed.clear(); udp_queue_stand.clear(); udp_queue_timed.rehash(0); udp_queue_stand.shrink_to_fit(); udp_listening = false; } else thread_released[1] = true;
-			thread_release.unlock();
+			mutex_udp_server_proc.unlock();
 		}
 	};
 }
